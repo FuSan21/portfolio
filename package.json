@@ -1,7 +1,7 @@
 {
   "name": "space-portfolio",
   "version": "1.0.1",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -71,6 +71,7 @@
     "react-hook-form": "^7.52.2",
     "react-icons": "^5.0.1",
     "react-intersection-observer": "^9.5.3",
+    "sharp": "^0.33.5",
     "tailwind-merge": "^2.2.0",
     "three": "^0.160.0"
   },
