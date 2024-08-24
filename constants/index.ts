@@ -9,14 +9,32 @@ import { TbFileCv } from "react-icons/tb";
 
 export const SKILL_DATA = [
   {
-    skill_name: "HTML",
-    image: "html.png",
+    skill_name: "Python",
+    image: "python.png",
     width: 80,
     height: 80,
   },
   {
-    skill_name: "CSS",
-    image: "css.png",
+    skill_name: "Java",
+    image: "java.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "Kotlin",
+    image: "kotlin.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "PHP",
+    image: "php.png",
+    width: 90,
+    height: 90,
+  },
+  {
+    skill_name: "C++",
+    image: "cpp.png",
     width: 80,
     height: 80,
   },
@@ -27,52 +45,10 @@ export const SKILL_DATA = [
     height: 65,
   },
   {
-    skill_name: "Tailwind CSS",
-    image: "tailwind.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "React",
-    image: "react.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "Redux",
-    image: "redux.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "React Query",
-    image: "reactquery.png",
-    width: 80,
-    height: 80,
-  },
-  {
     skill_name: "TypeScript",
     image: "ts.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "Next.js 14",
-    image: "next.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "Framer Motion",
-    image: "framer.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "Stripe",
-    image: "stripe.png",
-    width: 80,
-    height: 80,
+    width: 65,
+    height: 65,
   },
   {
     skill_name: "Node.js",
@@ -81,10 +57,10 @@ export const SKILL_DATA = [
     height: 80,
   },
   {
-    skill_name: "MongoDB",
-    image: "mongodb.png",
-    width: 40,
-    height: 40,
+    skill_name: "Express.js",
+    image: "express.png",
+    width: 80,
+    height: 80,
   },
 ] as const;
 
@@ -120,12 +96,6 @@ export const FRONTEND_SKILL = [
     height: 80,
   },
   {
-    skill_name: "JavaScript",
-    image: "js.png",
-    width: 65,
-    height: 65,
-  },
-  {
     skill_name: "Tailwind CSS",
     image: "tailwind.png",
     width: 80,
@@ -144,26 +114,14 @@ export const FRONTEND_SKILL = [
     height: 80,
   },
   {
-    skill_name: "Redux",
-    image: "redux.png",
+    skill_name: "Three.js",
+    image: "three.svg",
     width: 80,
     height: 80,
   },
   {
-    skill_name: "React Query",
-    image: "reactquery.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "TypeScript",
-    image: "ts.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "Next.js 14",
-    image: "next.png",
+    skill_name: "Framer Motion",
+    image: "framer.png",
     width: 80,
     height: 80,
   },
@@ -171,16 +129,10 @@ export const FRONTEND_SKILL = [
 
 export const BACKEND_SKILL = [
   {
-    skill_name: "Node.js",
-    image: "node.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "Express.js",
-    image: "express.png",
-    width: 80,
-    height: 80,
+    skill_name: "MySQL",
+    image: "mysql.png",
+    width: 70,
+    height: 70,
   },
   {
     skill_name: "MongoDB",
@@ -195,26 +147,26 @@ export const BACKEND_SKILL = [
     height: 55,
   },
   {
-    skill_name: "PostgreSQL",
-    image: "postgresql.png",
+    skill_name: "Cloudflare",
+    image: "cloudflare.png",
     width: 70,
     height: 70,
   },
   {
-    skill_name: "MySQL",
-    image: "mysql.png",
+    skill_name: "AWS",
+    image: "aws.svg",
     width: 70,
     height: 70,
   },
   {
-    skill_name: "Prisma",
-    image: "prisma.png",
-    width: 70,
-    height: 70,
+    skill_name: "Git",
+    image: "git.png",
+    width: 80,
+    height: 80,
   },
   {
-    skill_name: "Graphql",
-    image: "graphql.png",
+    skill_name: "Linux",
+    image: "linux.png",
     width: 80,
     height: 80,
   },
@@ -222,27 +174,26 @@ export const BACKEND_SKILL = [
 
 export const FULLSTACK_SKILL = [
   {
-    skill_name: "React Native",
-    image: "reactnative.png",
+    skill_name: "Laravel",
+    image: "laravel.svg",
     width: 70,
     height: 70,
   },
   {
-    skill_name: "Tauri",
-    image: "tauri.png",
+    skill_name: "Next.js",
+    image: "next.png",
     width: 70,
     height: 70,
   },
   {
-    skill_name: "Docker",
-    image: "docker.png",
-    width: 70,
-    height: 70,
+    skill_name: "FastAPI",
+    image: "fastapi.svg",
+    width: 50,
+    height: 50,
   },
-
   {
-    skill_name: "Figma",
-    image: "figma.png",
+    skill_name: "Django",
+    image: "django.png",
     width: 50,
     height: 50,
   },
@@ -250,8 +201,14 @@ export const FULLSTACK_SKILL = [
 
 export const OTHER_SKILL = [
   {
-    skill_name: "Go",
-    image: "go.png",
+    skill_name: "Docker",
+    image: "docker.png",
+    width: 60,
+    height: 60,
+  },
+  {
+    skill_name: "Github Actions",
+    image: "github-actions.svg",
     width: 60,
     height: 60,
   },
