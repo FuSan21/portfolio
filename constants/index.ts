@@ -265,54 +265,6 @@ export const PROJECTS = [
   },
 ] as const;
 
-export const FOOTER_DATA = [
-  {
-    title: "Community",
-    data: [
-      {
-        name: "GitHub",
-        icon: RxGithubLogo,
-        link: "https://github.com/FuSan21",
-      },
-      {
-        name: "Discord",
-        icon: RxDiscordLogo,
-        link: "https://discordapp.com/users/867995866219286618",
-      },
-    ],
-  },
-  {
-    title: "Social Media",
-    data: [
-      {
-        name: "Twitter",
-        icon: BsTwitterX,
-        link: "https://x.com/FuSan2102",
-      },
-      {
-        name: "Linkedin",
-        icon: RxLinkedinLogo,
-        link: "https://www.linkedin.com/in/fusan",
-      },
-    ],
-  },
-  {
-    title: "About",
-    data: [
-      {
-        name: "Learning about me",
-        icon: null,
-        link: "https://www.fusan.live",
-      },
-      {
-        name: "Contact Me",
-        icon: null,
-        link: "mailto:fuad.antor@gmail.com",
-      },
-    ],
-  },
-] as const;
-
 export const NAV_LINKS = [
   {
     title: "About me",
@@ -352,5 +304,44 @@ export const PROFESSIONAL_PROFILES = [
     profile_name: "Github",
     icon: RxGithubLogo,
     link: "https://github.com/FuSan21"
+  },
+] as const;
+
+export const USED_TECH = [
+  {
+    skill_name: "Next.js",
+    image: "next.png",
+    width: 70,
+    height: 70,
+  },
+  {
+    skill_name: "React",
+    image: "react.png",
+    width: 70,
+    height: 70,
+  },
+  {
+    skill_name: "TypeScript",
+    image: "ts.png",
+    width: 70,
+    height: 70,
+  },
+  {
+    skill_name: "Tailwind CSS",
+    image: "tailwind.png",
+    width: 70,
+    height: 70,
+  },
+  {
+    skill_name: "Three.js",
+    image: "three.svg",
+    width: 70,
+    height: 70,
+  },
+  {
+    skill_name: "Framer Motion",
+    image: "framer.png",
+    width: 70,
+    height: 70,
   },
 ] as const;

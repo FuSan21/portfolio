@@ -1,36 +1,30 @@
 import Link from "next/link";
-
-import { FOOTER_DATA } from "@/constants";
+import Image from "next/image";
+import { USED_TECH } from "@/constants";
 
 export const Footer = () => {
   return (
     <div className="w-full h-full bg-transparent text-gray-200 shadow-lg md:p-[15px]">
       <div className="w-full flex flex-col items-center justify-center m-auto">
-        <div className="w-full h-full flex flex-row items-center justify-around flex-wrap">
-          {FOOTER_DATA.map((column) => (
-            <div
-              key={column.title}
-              className="min-w-[200px] h-auto flex flex-col items-center justify-start"
-            >
-              <h3 className="font-bold text-[16px]">{column.title}</h3>
-              {column.data.map(({ icon: Icon, name, link }) => (
-                <Link
-                  key={`${column.title}-${name}`}
-                  href={link}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="flex flex-row items-center my-[15px]"
-                >
-                  {Icon && <Icon />}
-                  <span className="text-[15px] ml-[6px]">{name}</span>
-                </Link>
-              ))}
-            </div>
-          ))}
-        </div>
-
-        <div className="mb-[20px] text-[15px] text-center">
-          &copy; Fuad Hasan {new Date().getFullYear()} Inc. All rights reserved.
+        <div className="flex md:flex-row flex-col justify-between items-center space-y-4 md:space-y-0 my-auto w-full md:w-3/4 ">
+          <p className="mb-[20px] text-[20px]">
+            &copy; Fuad Hasan {new Date().getFullYear()} Inc. All rights
+            reserved.
+          </p>
+          <div className="flex flex-row space-x-2">
+            <p className="mb-[20px] text-[20px] text-white">Made with </p>
+            {USED_TECH.map(({ skill_name, image, width, height }) => (
+              <div key={skill_name} className="w-6">
+                <Image
+                  src={`/skills/${image}`}
+                  width={width}
+                  height={height}
+                  alt={skill_name}
+                  title={skill_name}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
