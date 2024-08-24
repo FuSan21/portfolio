@@ -1,11 +1,11 @@
-import { FaYoutube, FaFacebook } from "react-icons/fa";
+import { FaFacebook, FaMailBulk } from "react-icons/fa";
 import {
   RxDiscordLogo,
   RxGithubLogo,
-  RxInstagramLogo,
-  RxTwitterLogo,
   RxLinkedinLogo,
 } from "react-icons/rx";
+import { BsTwitterX } from "react-icons/bs";
+import { TbFileCv } from "react-icons/tb";
 
 export const SKILL_DATA = [
   {
@@ -90,19 +90,19 @@ export const SKILL_DATA = [
 
 export const SOCIALS = [
   {
-    name: "Instagram",
-    icon: RxInstagramLogo,
-    link: "https://instagram.com",
+    name: "Discord",
+    icon: RxDiscordLogo,
+    link: "https://discordapp.com/users/867995866219286618",
   },
   {
     name: "Facebook",
     icon: FaFacebook,
-    link: "https://facebook.com",
+    link: "https://www.facebook.com/fuad.hasan21",
   },
   {
     name: "Twitter",
-    icon: RxTwitterLogo,
-    link: "https://twitter.com",
+    icon: BsTwitterX,
+    link: "https://x.com/FuSan2102",
   },
 ] as const;
 
@@ -259,25 +259,52 @@ export const OTHER_SKILL = [
 
 export const PROJECTS = [
   {
-    title: "Modern Next.js 14 Portfolio",
+    title: "Clinique Accounts Management Web App",
     description:
-      'Embark on a journey through my professional evolution with the "Modern Next.js Portfolio" - a dynamic showcase of my skills, experiences, and passion for web development. Crafted with precision and powered by Next.js, this portfolio is more than just a static display; it\'s an immersive experience that reflects the cutting edge of modern web technologies.',
-    image: "/projects/project-1.png",
-    link: "https://example.com",
+      'A comprehensive web application designed to streamline and automate the financial and operational processes of a Nursing Home.',
+    image: "/projects/clinique.webp",
+    demo: "https://example.com",
+    source: "https://example.com",
   },
   {
-    title: "Interactive Cards Portfolio",
+    title: "Vehicle Accessories Inventory Shop",
     description:
-      'Step into the extraordinary world of my professional journey through the "Interactive Cards Portfolio" - an innovative and visually captivating platform that redefines the traditional portfolio experience. Ditching the conventional static layout, this portfolio leverages interactive cards to showcase my skills, projects, and personality in an engaging and dynamic manner.',
-    image: "/projects/project-2.png",
-    link: "https://example.com",
+      'A complete Store Website where admin can manage products, orders, and users. Users can buy products and track their orders. Has filtering, searching, and sorting.',
+    image: "/projects/vehicleparts.webp",
+    demo: "https://example.com",
+    source: "https://example.com",
   },
   {
-    title: "Space Themed Website",
+    title: "Pocket Karaoke",
     description:
-      'Embark on an interstellar journey with my "Space Themed Website", a mesmerizing space-themed website that invites you to explore the cosmic wonders beyond our world. Immerse yourself in an awe-inspiring digital experience that blends cutting-edge design with the mysteries of the universe.',
-    image: "/projects/project-3.png",
-    link: "https://example.com",
+      'PocketKaraoke is a Kotlin karaoke app for Android written in MVP architecture. You can sing along popular songs and get scored based on your singing.',
+    image: "/projects/pocketkaraoke.webp",
+    demo: "https://example.com",
+    source: "https://example.com",
+  },
+  {
+    title: "Furnicraft BD",
+    description:
+      'A static company portfolio website hosted via cloudflare page. It\'s a responsive website with a clean UI.',
+    image: "/projects/furni.webp",
+    demo: "https://example.com",
+    source: "https://example.com",
+  },
+  {
+    title: "Federated Metaverse Dynamic Authentication",
+    description:
+      'A Custom made Dynamic authentication Scheme for the Federated Metaverse to authenticate users across different metaverse servers.',
+    image: "/projects/Federated-Metaverse.webp",
+    demo: "https://example.com",
+    source: "https://example.com",
+  },
+  {
+    title: "Friend Activity Grid Theme for Discord",
+    description:
+      'A theme for Discord that makes the friend activity grid visible on width of 1200px and below. It shows the friend activity below friend list in a gridbox.',
+    image: "/projects/discord-friend-activity-grid.webp",
+    demo: "https://example.com",
+    source: "https://example.com",
   },
 ] as const;
 
@@ -286,19 +313,14 @@ export const FOOTER_DATA = [
     title: "Community",
     data: [
       {
-        name: "YouTube",
-        icon: FaYoutube,
-        link: "https://youtube.com",
-      },
-      {
         name: "GitHub",
         icon: RxGithubLogo,
-        link: "https://github.com",
+        link: "https://github.com/FuSan21",
       },
       {
         name: "Discord",
         icon: RxDiscordLogo,
-        link: "https://discord.com",
+        link: "https://discordapp.com/users/867995866219286618",
       },
     ],
   },
@@ -306,19 +328,14 @@ export const FOOTER_DATA = [
     title: "Social Media",
     data: [
       {
-        name: "Instagram",
-        icon: RxInstagramLogo,
-        link: "https://instagram.com",
-      },
-      {
         name: "Twitter",
-        icon: RxTwitterLogo,
-        link: "https://twitter.com",
+        icon: BsTwitterX,
+        link: "https://x.com/FuSan2102",
       },
       {
         name: "Linkedin",
         icon: RxLinkedinLogo,
-        link: "https://linkedin.com",
+        link: "https://www.linkedin.com/in/fusan",
       },
     ],
   },
@@ -326,19 +343,14 @@ export const FOOTER_DATA = [
     title: "About",
     data: [
       {
-        name: "Become Sponsor",
-        icon: null,
-        link: "https://youtube.com",
-      },
-      {
         name: "Learning about me",
         icon: null,
-        link: "https://example.com",
+        link: "https://www.fusan.live",
       },
       {
         name: "Contact Me",
         icon: null,
-        link: "mailto:contact@example.com",
+        link: "mailto:fuad.antor@gmail.com",
       },
     ],
   },
@@ -357,8 +369,31 @@ export const NAV_LINKS = [
     title: "Projects",
     link: "#projects",
   },
+  {
+    title: "Contact",
+    link: "#contact-us",
+  },
 ] as const;
 
-export const LINKS = {
-  sourceCode: "https://github.com/sanidhyy/space-portfolio",
-};
+export const PROFESSIONAL_PROFILES = [
+  {
+    profile_name: "CV",
+    icon: TbFileCv,
+    link: "./CV/MdFuadHasan.pdf",
+  },
+  {
+    profile_name: "Email",
+    icon: FaMailBulk,
+    link: "mailto:fuad.antor@gmail.com",
+  },
+  {
+    profile_name: "LinkedIn",
+    icon: RxLinkedinLogo,
+    link: "https://www.linkedin.com/in/fusan",
+  },
+  {
+    profile_name: "Github",
+    icon: RxGithubLogo,
+    link: "https://github.com/FuSan21"
+  },
+] as const;

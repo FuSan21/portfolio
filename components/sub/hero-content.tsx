@@ -3,6 +3,8 @@
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { PROFESSIONAL_PROFILES } from "@/constants";
+
 
 import {
   slideInFromLeft,
@@ -23,8 +25,8 @@ export const HeroContent = () => {
           className="Welcome-box py-[8px] px-[7px] border border-[#7042f88b] opacity-[0.9]]"
         >
           <SparklesIcon className="text-[#b49bff] mr-[10px] h-5 w-5" />
-          <h1 className="Welcome-text text-[13px]">
-            Fullstack Developer Portfolio
+          <h1 className="Welcome-text text-[20px] font-semibold">
+            Fuad Hasan
           </h1>
         </motion.div>
 
@@ -33,11 +35,11 @@ export const HeroContent = () => {
           className="flex flex-col gap-6 mt-6 text-6xl text-bold text-white max-w-[600px] w-auto h-auto"
         >
           <span>
-            Providing{" "}
+            Engineering{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
-              the best
+              the Future
             </span>{" "}
-            project experience.
+            with Passion and Innovation 🛠️🔮
           </span>
         </motion.div>
 
@@ -45,16 +47,26 @@ export const HeroContent = () => {
           variants={slideInFromLeft(0.8)}
           className="text-lg text-gray-400 my-5 max-w-[600px]"
         >
-          I&apos;m a Full Stack Software Engineer with experience in Website,
-          Mobile, and Software development. Check out my projects and skills.
+          I graduated from BRAC University with a degree in Computer Science
+          and Engineering, and I’m now a Freelance Web Developer. I have a
+          deep passion for full stack development and am driven by a desire
+          to collaborate on projects that push the limits of technology.
         </motion.p>
-
-        <motion.a
-          variants={slideInFromLeft(1)}
-          className="py-2 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px]"
-        >
-          Learn more
-        </motion.a>
+        <div className="flex space-x-4">
+          {PROFESSIONAL_PROFILES.map((link, index) => (
+            <motion.a
+              variants={slideInFromLeft(1 + index * 0.6)}
+              key={link.profile_name}
+              href={link.link}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="flex items-center p-2.5 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px]"
+            >
+              <link.icon className="h-6 w-6 mr-2" />
+              <span>{link.profile_name}</span>
+            </motion.a>
+          ))}
+        </div>
       </div>
 
       <motion.div
