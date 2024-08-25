@@ -1,6 +1,11 @@
 "use client";
 
-import { Points, PointMaterial } from "@react-three/drei";
+import {
+  Points,
+  PointMaterial,
+  OrbitControls,
+  useGLTF,
+} from "@react-three/drei";
 import { Canvas, type PointsProps, useFrame } from "@react-three/fiber";
 import * as random from "maath/random";
 import { useState, useRef, Suspense } from "react";
