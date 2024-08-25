@@ -3,14 +3,20 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-import { slideInFromTop } from "@/lib/motion";
+import { fadeIn, staggerContainer } from "@/lib/motion";
 
 export const Encryption = () => {
   return (
-    <div className="flex flex-row relative items-center justify-center min-h-screen w-full h-full -z-20">
+    <motion.div
+      className="flex flex-row relative items-center justify-center min-h-screen w-full h-full -z-20"
+      variants={staggerContainer()}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.25 }}
+    >
       <div className="absolute w-auto h-auto top-0 z-[5]">
         <motion.div
-          variants={slideInFromTop}
+          variants={fadeIn("up", "spring", 0.5, 1.25)}
           className="text-[40px] font-medium text-center text-gray-200"
         >
           Performance{" "}
@@ -62,6 +68,6 @@ export const Encryption = () => {
           <source src="/videos/encryption-bg.webm" type="video/webm" />
         </video>
       </div>
-    </div>
+    </motion.div>
   );
 };

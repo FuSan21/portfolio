@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import { HeroContent } from "@/components/sub/hero-content";
 import { SERVICES } from "@/constants";
-import { fadeIn, textVariant } from "@/lib/motion";
+import { fadeIn, staggerContainer } from "@/lib/motion";
 
 type ServiceCardProps = {
   index: number;
@@ -61,11 +61,17 @@ export const Hero = () => {
 
         <HeroContent />
       </div>
-      <div className="mt-20 flex flex-row flex-wrap gap-10 justify-center items-center">
+      <motion.div
+        className="mt-20 flex flex-row flex-wrap gap-10 justify-center items-center"
+        variants={staggerContainer()}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.25 }}
+      >
         {SERVICES.map((service, i) => (
           <ServiceCard key={service.title} index={i} {...service} />
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };
