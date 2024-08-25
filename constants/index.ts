@@ -7,6 +7,25 @@ import {
 import { BsTwitterX } from "react-icons/bs";
 import { TbFileCv } from "react-icons/tb";
 
+export const SERVICES = [
+  {
+    title: "Web Developer",
+    icon: "web.png",
+  },
+  {
+    title: "Backend Developer",
+    icon: "backend.png",
+  },
+  {
+    title: "Frontend Developer",
+    icon: "frontend.png",
+  },
+  {
+    title: "Android Developer Kotlin",
+    icon: "mobile.png",
+  },
+] as const;
+
 export const SKILL_DATA = [
   {
     skill_name: "Python",
