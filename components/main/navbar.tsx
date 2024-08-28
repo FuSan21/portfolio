@@ -23,7 +23,7 @@ export const Navbar = () => {
         </Link>
 
         <div className="w-[500px] h-full flex flex-row items-center justify-between order-3 basis-full md:order-2 md:basis-auto">
-          <div className="flex items-center justify-between w-full h-auto border-[rgba(112,66,248,0.38)] bg-[rgba(3,0,20,0.37)] mr-[15px] px-[20px] py-[10px] rounded-full text-gray-200">
+          <div className="flex items-center justify-between w-full h-auto border-[rgba(112,66,248,0.38)] bg-[rgba(3,0,20,0.37)] mr-[15px] px-[20px] py-[10px] rounded-full text-gray-200 text-sm md:text-base">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.title}

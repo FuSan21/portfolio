@@ -331,7 +331,7 @@ export const PROJECTS = [
 
 export const NAV_LINKS = [
   {
-    title: "About me",
+    title: "About",
     link: "#about-me",
   },
   {
@@ -341,6 +341,10 @@ export const NAV_LINKS = [
   {
     title: "Projects",
     link: "#projects",
+  },
+  {
+    title: "Experiences",
+    link: "#experiences",
   },
   {
     title: "Contact",
