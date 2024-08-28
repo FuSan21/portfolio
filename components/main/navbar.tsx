@@ -19,9 +19,7 @@ export const Navbar = () => {
             draggable={false}
             className="cursor-pointer hover:animate-slowspin"
           />
-          <div className="font-bold ml-[10px] hidden md:block text-gray-300">
-            Fuad Hasan
-          </div>
+          <div className="font-bold ml-[10px] text-gray-300">Fuad Hasan</div>
         </Link>
 
         <div className="w-[500px] h-full flex flex-row items-center justify-between order-3 basis-full md:order-2 md:basis-auto">
