@@ -11,7 +11,7 @@ export const Projects = () => {
       variants={staggerContainer()}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.25 }}
+      viewport={{ once: true, amount: 0.2 }}
       className={"flex flex-col items-center justify-center py-20"}
     >
       <h1
