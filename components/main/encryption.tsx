@@ -7,7 +7,7 @@ import { fadeIn, staggerContainer } from "@/lib/motion";
 
 export const Encryption = () => {
   return (
-    <motion.div
+    <motion.section
       className="flex flex-row relative items-center justify-center min-h-screen w-full h-full -z-20"
       variants={staggerContainer()}
       initial="hidden"
@@ -63,11 +63,11 @@ export const Encryption = () => {
           autoPlay
           playsInline
           preload="false"
-          className="w-full h-auto"
+          className="w-full h-full md:h-auto object-cover md:object-fill min-w-full min-h-screen"
         >
           <source src="/videos/encryption-bg.webm" type="video/webm" />
         </video>
       </div>
-    </motion.div>
+    </motion.section>
   );
 };
