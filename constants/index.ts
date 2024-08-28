@@ -26,6 +26,51 @@ export const SERVICES = [
   },
 ] as const;
 
+export const EXPERIENCES = [
+  {
+    title: "Self-Employed",
+    company_name: "Wordpress Content Creator/Developer",
+    icon: "tekinouchi.png",
+    iconBg: "#E6DEDD",
+    date: "Feb 2019 - Jul 2023",
+    points: [
+      "Delivered high-quality, insightful, informative, and entertaining written content.",
+      "Set up the hosting environment in **AWS EC2, Lightsail** and custom **cpanel hostings**.",
+      "Implemented automated scraping using **Selenium** python library and published content using **wordpress REST API.**",
+    ],
+  },
+  {
+    title: "Frontend Web Developer",
+    company_name: "Fiver",
+    icon: "fiver.png",
+    iconBg: "#383E56",
+    date: "Feb 2023 - Jul 2023",
+    points: [
+      "Specialized in crafting custom WordPress dashboards to match client requirements using **ACF, UiPress**.",
+      "Worked on designing tailored widgets in a custom dashboard using **HTML, CSS, JS and Wordpress Hooks**.",
+      "Skilled in optimizing dashboard usability and efficiency.",
+      "Troubleshot and **fixed bugs** and issues in the backend.",
+    ],
+  },
+  {
+    title: "Full Stack Web Developer",
+    company_name: "Tekinouchi",
+    icon: "tekinouchi.png",
+    iconBg: "#E6DEDD",
+    date: "May 2023 - Present",
+    points: [
+      "Maintained strong skill set in various technologies to update, optimize and rectify issues with corporate website.",
+      "Maintained  version control systems such as **Git** in order to keep track of changes made to the source code.",
+      "Provided technical support and troubleshooting services when needed.",
+      "Designed creative user interfaces for websites with a focus on usability",
+      "Developed, tested and debugged web applications using **HTML5, CSS3, JS and Laravel**",
+      "Modified existing WordPress plugin or theme to add functionality.",
+      "Configured databases such as **MySQL** in order to store data securely",
+      "Integrated **third-party APIs** into web applications for enhanced functionality"
+    ],
+  },
+] as const;
+
 export const SKILL_DATA = [
   {
     skill_name: "Python",
