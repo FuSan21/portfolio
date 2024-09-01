@@ -285,7 +285,7 @@ export const PROJECTS = [
       'A comprehensive web application designed to streamline and automate the financial and operational processes of a Nursing Home.',
     image: "/projects/clinique.webp",
     demo: "https://github.com/FuSan21/clinique-account-management",
-    source: "#",
+    source: "",
   },
   {
     title: "Vehicle Accessories Inventory Shop",
@@ -309,7 +309,7 @@ export const PROJECTS = [
       'A static company portfolio website hosted via cloudflare page. It\'s a responsive website with a clean UI.',
     image: "/projects/furni.webp",
     demo: "https://www.furnicraftbd.com",
-    source: "#",
+    source: "",
   },
   {
     title: "Federated Metaverse Dynamic Authentication",
