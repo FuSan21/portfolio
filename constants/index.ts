@@ -284,48 +284,48 @@ export const PROJECTS = [
     description:
       'A comprehensive web application designed to streamline and automate the financial and operational processes of a Nursing Home.',
     image: "/projects/clinique.webp",
-    demo: "https://example.com",
-    source: "https://example.com",
+    demo: "https://github.com/FuSan21/clinique-account-management",
+    source: "#",
   },
   {
     title: "Vehicle Accessories Inventory Shop",
     description:
       'A complete Store Website where admin can manage products, orders, and users. Users can buy products and track their orders. Has filtering, searching, and sorting.',
     image: "/projects/vehicleparts.webp",
-    demo: "https://example.com",
-    source: "https://example.com",
+    demo: "https://demo1.fusan.live",
+    source: "https://github.com/FuSan21/store-Management-Website",
   },
   {
     title: "Pocket Karaoke",
     description:
       'PocketKaraoke is a Kotlin karaoke app for Android written in MVP architecture. You can sing along popular songs and get scored based on your singing.',
     image: "/projects/pocketkaraoke.webp",
-    demo: "https://example.com",
-    source: "https://example.com",
+    demo: "https://github.com/FuSan21/PocketKaraoke",
+    source: "https://github.com/FuSan21/PocketKaraoke",
   },
   {
     title: "Furnicraft BD",
     description:
       'A static company portfolio website hosted via cloudflare page. It\'s a responsive website with a clean UI.',
     image: "/projects/furni.webp",
-    demo: "https://example.com",
-    source: "https://example.com",
+    demo: "https://www.furnicraftbd.com",
+    source: "#",
   },
   {
     title: "Federated Metaverse Dynamic Authentication",
     description:
       'A Custom made Dynamic authentication Scheme for the Federated Metaverse to authenticate users across different metaverse servers.',
     image: "/projects/Federated-Metaverse.webp",
-    demo: "https://example.com",
-    source: "https://example.com",
+    demo: "https://github.com/FuSan21/federated-metaverse-authentication-mSAML-PKA",
+    source: "https://github.com/FuSan21/federated-metaverse-authentication-mSAML-PKA",
   },
   {
     title: "Friend Activity Grid Theme for Discord",
     description:
       'A theme for Discord that makes the friend activity grid visible on width of 1200px and below. It shows the friend activity below friend list in a gridbox.',
     image: "/projects/discord-friend-activity-grid.webp",
-    demo: "https://example.com",
-    source: "https://example.com",
+    demo: "https://github.com/FuSan21/FriendActivityGrid/",
+    source: "https://github.com/FuSan21/FriendActivityGrid/",
   },
 ] as const;
 
@@ -339,12 +339,12 @@ export const NAV_LINKS = [
     link: "#skills",
   },
   {
-    title: "Projects",
-    link: "#projects",
-  },
-  {
     title: "Experiences",
     link: "#experiences",
+  },
+  {
+    title: "Projects",
+    link: "#projects",
   },
   {
     title: "Contact",
