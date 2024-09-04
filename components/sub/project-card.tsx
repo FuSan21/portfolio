@@ -28,8 +28,8 @@ export const ProjectCard = ({
       <Image
         src={src}
         alt={title}
-        width={1000}
-        height={1000}
+        width={1498}
+        height={842}
         className="w-full object-contain"
       />
 
