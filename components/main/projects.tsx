@@ -13,12 +13,10 @@ export const Projects = () => {
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages - 1));
-    window.open("#projects", "_self");
   };
 
   const handlePrevPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
-    window.open("#projects", "_self");
   };
 
   const startIndex = currentPage * projectsPerPage;
@@ -27,9 +25,10 @@ export const Projects = () => {
 
   return (
     <motion.section
+      key={currentPage}
       variants={staggerContainer(0.1, 0.2)}
       initial="hidden"
-      animate="show"
+      whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
       className={"flex flex-col items-center justify-center py-20"}
     >
