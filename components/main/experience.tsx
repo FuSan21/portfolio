@@ -75,7 +75,7 @@ export const Experience = () => {
       <motion.div variants={textVariant()}>
         <p
           className={
-            "sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider"
+            "sm:text-[18px] text-[14px] text-gray-400 font-black uppercase tracking-wider"
           }
         >
           What I have done so far

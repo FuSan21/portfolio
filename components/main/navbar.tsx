@@ -42,6 +42,7 @@ export const Navbar = () => {
               href={link}
               target="_blank"
               rel="noreferrer noopener"
+              aria-label={name + " Link"}
               key={name}
             >
               <Icon className="h-6 w-6 text-white" />
