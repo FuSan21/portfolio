@@ -1,9 +1,5 @@
 import { FaFacebook, FaMailBulk } from "react-icons/fa";
-import {
-  RxDiscordLogo,
-  RxGithubLogo,
-  RxLinkedinLogo,
-} from "react-icons/rx";
+import { RxDiscordLogo, RxGithubLogo, RxLinkedinLogo } from "react-icons/rx";
 import { BsTwitterX } from "react-icons/bs";
 import { TbFileCv } from "react-icons/tb";
 
@@ -66,7 +62,7 @@ export const EXPERIENCES = [
       "Developed, tested and debugged web applications using **HTML5, CSS3, JS and Laravel**",
       "Modified existing WordPress plugin or theme to add functionality.",
       "Configured databases such as **MySQL** in order to store data securely",
-      "Integrated **third-party APIs** into web applications for enhanced functionality"
+      "Integrated **third-party APIs** into web applications for enhanced functionality",
     ],
   },
 ] as const;
@@ -282,31 +278,47 @@ export const PROJECTS = [
   {
     title: "Clinique Accounts Management Web App",
     description:
-      'A comprehensive web application designed to streamline and automate the financial and operational processes of a Nursing Home.',
+      "A comprehensive web application designed to streamline and automate the financial and operational processes of a Nursing Home.",
     image: "/projects/clinique.webp",
     demo: "https://github.com/FuSan21/clinique-account-management",
     source: "",
   },
   {
+    title: "Kahoot Portal",
+    description:
+      "This project is a multiplayer quiz app. Quiz host can create quizzes and players can join the quiz using a link. It handles players in realtime and show answer accuracy and final score after question timer and quiz completion respectively.",
+    image: "/projects/kahoot-portal.webp",
+    demo: "https://demo2.fusan.live",
+    source: "https://github.com/FuSan21/kahoot-portal",
+  },
+  {
     title: "Vehicle Accessories Inventory Shop",
     description:
-      'A complete Store Website where admin can manage products, orders, and users. Users can buy products and track their orders. Has filtering, searching, and sorting.',
+      "A complete Store Website where admin can manage products, orders, and users. Users can buy products and track their orders. Has filtering, searching, and sorting.",
     image: "/projects/vehicleparts.webp",
     demo: "https://demo1.fusan.live",
     source: "https://github.com/FuSan21/store-Management-Website",
   },
   {
+    title: "3d Space Portfolio",
+    description:
+      "This project is an enhanced version of the sanidhyy/space-portfolio, incorporating advanced features and improved responsiveness for smaller screens. It utilizes Three.js for sophisticated 3D rendering and Framer Motion for dynamic animations.",
+    image: "/projects/portfolio.webp",
+    demo: "https://www.fusan.live",
+    source: "https://github.com/FuSan21/portfolio]",
+  },
+  {
     title: "Pocket Karaoke",
     description:
-      'PocketKaraoke is a Kotlin karaoke app for Android written in MVP architecture. You can sing along popular songs and get scored based on your singing.',
+      "PocketKaraoke is a Kotlin karaoke app for Android written in MVP architecture. You can sing along popular songs and get scored based on your singing.",
     image: "/projects/pocketkaraoke.webp",
-    demo: "https://github.com/FuSan21/PocketKaraoke",
+    demo: "",
     source: "https://github.com/FuSan21/PocketKaraoke",
   },
   {
     title: "Furnicraft BD",
     description:
-      'A static company portfolio website hosted via cloudflare page. It\'s a responsive website with a clean UI.',
+      "A static company portfolio website hosted via cloudflare page. It's a responsive website with a clean UI.",
     image: "/projects/furni.webp",
     demo: "https://www.furnicraftbd.com",
     source: "",
@@ -314,15 +326,16 @@ export const PROJECTS = [
   {
     title: "Federated Metaverse Dynamic Authentication",
     description:
-      'A Custom made Dynamic authentication Scheme for the Federated Metaverse to authenticate users across different metaverse servers.',
+      "A Custom made Dynamic authentication Scheme for the Federated Metaverse to authenticate users across different metaverse servers.",
     image: "/projects/Federated-Metaverse.webp",
     demo: "https://github.com/FuSan21/federated-metaverse-authentication-mSAML-PKA",
-    source: "https://github.com/FuSan21/federated-metaverse-authentication-mSAML-PKA",
+    source:
+      "https://github.com/FuSan21/federated-metaverse-authentication-mSAML-PKA",
   },
   {
     title: "Friend Activity Grid Theme for Discord",
     description:
-      'A theme for Discord that makes the friend activity grid visible on width of 1200px and below. It shows the friend activity below friend list in a gridbox.',
+      "A theme for Discord that makes the friend activity grid visible on width of 1200px and below. It shows the friend activity below friend list in a gridbox.",
     image: "/projects/discord-friend-activity-grid.webp",
     demo: "https://github.com/FuSan21/FriendActivityGrid/",
     source: "https://github.com/FuSan21/FriendActivityGrid/",
@@ -371,7 +384,7 @@ export const PROFESSIONAL_PROFILES = [
   {
     profile_name: "Github",
     icon: RxGithubLogo,
-    link: "https://github.com/FuSan21"
+    link: "https://github.com/FuSan21",
   },
 ] as const;
 
