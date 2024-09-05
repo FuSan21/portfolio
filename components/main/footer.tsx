@@ -14,14 +14,18 @@ export const Footer = () => {
           <div className="flex flex-row space-x-2">
             <p className="mb-[20px] text-[20px] text-white">Made with </p>
             {USED_TECH.map((skill) => (
-              <div key={skill.name} className="w-6">
+              <div key={skill.name} className="w-6 relative group">
                 <Image
                   src={`/skills/${skill.image}`}
                   width={skill.size}
                   height={skill.size}
                   alt={skill.name}
-                  title={skill.name}
+                  draggable={false}
+                  className="cursor-pointer select-none"
                 />
+                <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                  {skill.name}
+                </span>
               </div>
             ))}
           </div>

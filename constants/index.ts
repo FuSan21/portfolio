@@ -207,7 +207,7 @@ export const CLOUD_SERVICES = [
   },
   {
     skill_name: "Vercel",
-    image: "vercel.svg",
+    image: "vercel.png",
     size: 60,
   },
   {
@@ -359,7 +359,7 @@ export const PROJECTS = [
       },
       {
         name: "Vercel",
-        icon: "vercel.svg",
+        icon: "vercel.png",
       },
     ],
   },

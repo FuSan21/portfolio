@@ -50,6 +50,7 @@ export const Projects = () => {
             description={project.description}
             demo={project.demo}
             source={project.source}
+            tech={project.tech}
           />
         ))}
       </div>
