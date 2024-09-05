@@ -12,10 +12,12 @@ export const Projects = () => {
   const totalPages = Math.ceil(PROJECTS.length / projectsPerPage);
 
   const handleNextPage = () => {
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages - 1));
   };
 
   const handlePrevPage = () => {
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
   };
 
