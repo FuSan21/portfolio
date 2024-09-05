@@ -305,7 +305,7 @@ export const PROJECTS = [
       "This project is an enhanced version of the sanidhyy/space-portfolio, incorporating advanced features and improved responsiveness for smaller screens. It utilizes Three.js for sophisticated 3D rendering and Framer Motion for dynamic animations.",
     image: "/projects/portfolio.webp",
     demo: "https://www.fusan.live",
-    source: "https://github.com/FuSan21/portfolio]",
+    source: "https://github.com/FuSan21/portfolio",
   },
   {
     title: "Pocket Karaoke",
