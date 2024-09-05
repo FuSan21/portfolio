@@ -13,14 +13,14 @@ export const Footer = () => {
           </p>
           <div className="flex flex-row space-x-2">
             <p className="mb-[20px] text-[20px] text-white">Made with </p>
-            {USED_TECH.map(({ skill_name, image, width, height }) => (
-              <div key={skill_name} className="w-6">
+            {USED_TECH.map((skill) => (
+              <div key={skill.name} className="w-6">
                 <Image
-                  src={`/skills/${image}`}
-                  width={width}
-                  height={height}
-                  alt={skill_name}
-                  title={skill_name}
+                  src={`/skills/${skill.image}`}
+                  width={skill.size}
+                  height={skill.size}
+                  alt={skill.name}
+                  title={skill.name}
                 />
               </div>
             ))}

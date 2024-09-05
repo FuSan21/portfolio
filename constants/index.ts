@@ -67,60 +67,51 @@ export const EXPERIENCES = [
   },
 ] as const;
 
-export const SKILL_DATA = [
+export const BASE_LANGUAGE = [
   {
     skill_name: "Python",
     image: "python.png",
-    width: 80,
-    height: 80,
+    size: 80,
   },
   {
     skill_name: "Java",
     image: "java.png",
-    width: 80,
-    height: 80,
+    size: 80,
   },
   {
     skill_name: "Kotlin",
     image: "kotlin.png",
-    width: 80,
-    height: 80,
+    size: 80,
   },
   {
     skill_name: "PHP",
     image: "php.png",
-    width: 90,
-    height: 90,
+    size: 90,
   },
   {
     skill_name: "C++",
     image: "cpp.png",
-    width: 80,
-    height: 80,
+    size: 80,
   },
   {
     skill_name: "JavaScript",
     image: "js.png",
-    width: 65,
-    height: 65,
+    size: 65,
   },
   {
     skill_name: "TypeScript",
     image: "ts.png",
-    width: 65,
-    height: 65,
+    size: 65,
   },
   {
-    skill_name: "Node.js",
-    image: "node.png",
-    width: 80,
-    height: 80,
+    skill_name: "SQL",
+    image: "sql.png",
+    size: 90,
   },
   {
-    skill_name: "Express.js",
-    image: "express.png",
-    width: 80,
-    height: 80,
+    skill_name: "Bash",
+    image: "bash.png",
+    size: 90,
   },
 ] as const;
 
@@ -146,89 +137,93 @@ export const FRONTEND_SKILL = [
   {
     skill_name: "HTML",
     image: "html.png",
-    width: 80,
-    height: 80,
+    size: 80,
   },
   {
     skill_name: "CSS",
     image: "css.png",
-    width: 80,
-    height: 80,
+    size: 80,
   },
   {
     skill_name: "Tailwind CSS",
     image: "tailwind.png",
-    width: 80,
-    height: 80,
+    size: 80,
   },
   {
     skill_name: "Material UI",
     image: "mui.png",
-    width: 80,
-    height: 80,
+    size: 80,
   },
   {
-    skill_name: "React",
-    image: "react.png",
-    width: 80,
-    height: 80,
+    skill_name: "Flowbite",
+    image: "flowbite.png",
+    size: 80,
   },
   {
     skill_name: "Three.js",
     image: "three.svg",
-    width: 80,
-    height: 80,
+    size: 80,
   },
   {
     skill_name: "Framer Motion",
     image: "framer.png",
-    width: 80,
-    height: 80,
+    size: 80,
   },
 ] as const;
 
-export const BACKEND_SKILL = [
+export const DATABASE = [
   {
     skill_name: "MySQL",
     image: "mysql.png",
-    width: 70,
-    height: 70,
+    size: 70,
   },
   {
     skill_name: "MongoDB",
     image: "mongodb.png",
-    width: 40,
-    height: 40,
+    size: 40,
+  },
+  {
+    skill_name: "PostgreSQL",
+    image: "postgresql.png",
+    size: 55,
   },
   {
     skill_name: "Firebase",
     image: "firebase.png",
-    width: 55,
-    height: 55,
+    size: 55,
   },
+] as const;
+
+export const CLOUD_SERVICES = [
   {
     skill_name: "Cloudflare",
     image: "cloudflare.png",
-    width: 70,
-    height: 70,
+    size: 70,
   },
   {
     skill_name: "AWS",
     image: "aws.svg",
-    width: 70,
-    height: 70,
+    size: 70,
+  },
+  {
+    skill_name: "Vercel",
+    image: "vercel.svg",
+    size: 60,
+  },
+  {
+    skill_name: "Supabase",
+    image: "supabase.png",
+    size: 60,
   },
   {
     skill_name: "Git",
     image: "git.png",
-    width: 80,
-    height: 80,
+    size: 80,
   },
   {
     skill_name: "Linux",
     image: "linux.png",
-    width: 80,
-    height: 80,
+    size: 80,
   },
 ] as const;
 
@@ -236,26 +231,37 @@ export const FULLSTACK_SKILL = [
   {
     skill_name: "Laravel",
     image: "laravel.svg",
-    width: 70,
-    height: 70,
+    size: 70,
   },
   {
     skill_name: "Next.js",
     image: "next.png",
-    width: 70,
-    height: 70,
+    size: 70,
   },
   {
     skill_name: "FastAPI",
     image: "fastapi.svg",
-    width: 50,
-    height: 50,
+    size: 50,
   },
   {
     skill_name: "Django",
     image: "django.png",
-    width: 50,
-    height: 50,
+    size: 50,
+  },
+  {
+    skill_name: "Node.js",
+    image: "node.png",
+    size: 80,
+  },
+  {
+    skill_name: "Express.js",
+    image: "express.png",
+    size: 80,
+  },
+  {
+    skill_name: "React",
+    image: "react.png",
+    size: 80,
   },
 ] as const;
 
@@ -263,14 +269,12 @@ export const OTHER_SKILL = [
   {
     skill_name: "Docker",
     image: "docker.png",
-    width: 60,
-    height: 60,
+    size: 60,
   },
   {
     skill_name: "Github Actions",
     image: "github-actions.svg",
-    width: 60,
-    height: 60,
+    size: 60,
   },
 ] as const;
 
@@ -282,6 +286,32 @@ export const PROJECTS = [
     image: "/projects/clinique.webp",
     demo: "https://github.com/FuSan21/clinique-account-management",
     source: "",
+    tech: [
+      {
+        name: "Node.js",
+        icon: "node.png",
+      },
+      {
+        name: "Express.js",
+        icon: "express.png",
+      },
+      {
+        name: "MySQL",
+        icon: "mysql.png",
+      },
+      {
+        name: "JavaScript",
+        icon: "js.png",
+      },
+      {
+        name: "HTML",
+        icon: "html.png",
+      },
+      {
+        name: "CSS",
+        icon: "css.png",
+      },
+    ],
   },
   {
     title: "Kahoot Portal",
@@ -290,6 +320,48 @@ export const PROJECTS = [
     image: "/projects/kahoot-portal.webp",
     demo: "https://demo2.fusan.live",
     source: "https://github.com/FuSan21/kahoot-portal",
+    tech: [
+      {
+        name: "Next.js",
+        icon: "next.png",
+      },
+      {
+        name: "Node.js",
+        icon: "node.png",
+      },
+      {
+        name: "React",
+        icon: "react.png",
+      },
+      {
+        name: "TypeScript",
+        icon: "ts.png",
+      },
+      {
+        name: "Tailwind CSS",
+        icon: "tailwind.png",
+      },
+      {
+        name: "PostgreSQL",
+        icon: "postgresql.png",
+      },
+      {
+        name: "Supabase",
+        icon: "supabase.png",
+      },
+      {
+        name: "HTML",
+        icon: "html.png",
+      },
+      {
+        name: "CSS",
+        icon: "css.png",
+      },
+      {
+        name: "Vercel",
+        icon: "vercel.svg",
+      },
+    ],
   },
   {
     title: "Vehicle Accessories Inventory Shop",
@@ -298,6 +370,36 @@ export const PROJECTS = [
     image: "/projects/vehicleparts.webp",
     demo: "https://demo1.fusan.live",
     source: "https://github.com/FuSan21/store-Management-Website",
+    tech: [
+      {
+        name: "Laravel",
+        icon: "laravel.svg",
+      },
+      {
+        name: "Tailwind CSS",
+        icon: "tailwind.png",
+      },
+      {
+        name: "PostgreSQL",
+        icon: "postgresql.png",
+      },
+      {
+        name: "JavaScript",
+        icon: "js.png",
+      },
+      {
+        name: "HTML",
+        icon: "html.png",
+      },
+      {
+        name: "CSS",
+        icon: "css.png",
+      },
+      {
+        name: "Vercel",
+        icon: "vercel.png",
+      },
+    ],
   },
   {
     title: "3d Space Portfolio",
@@ -305,7 +407,41 @@ export const PROJECTS = [
       "This project is an enhanced version of the sanidhyy/space-portfolio, incorporating advanced features and improved responsiveness for smaller screens. It utilizes Three.js for sophisticated 3D rendering and Framer Motion for dynamic animations.",
     image: "/projects/portfolio.webp",
     demo: "https://www.fusan.live",
-    source: "https://github.com/FuSan21/portfolio",
+    source: "https://github.com/FuSan21/portfolio]",
+    tech: [
+      {
+        name: "Next.js",
+        icon: "next.png",
+      },
+      {
+        name: "React",
+        icon: "react.png",
+      },
+      {
+        name: "Three.js",
+        icon: "three.svg",
+      },
+      {
+        name: "Framer Motion",
+        icon: "framer.png",
+      },
+      {
+        name: "JavaScript",
+        icon: "js.png",
+      },
+      {
+        name: "HTML",
+        icon: "html.png",
+      },
+      {
+        name: "CSS",
+        icon: "css.png",
+      },
+      {
+        name: "Vercel",
+        icon: "vercel.png",
+      },
+    ],
   },
   {
     title: "Pocket Karaoke",
@@ -314,6 +450,16 @@ export const PROJECTS = [
     image: "/projects/pocketkaraoke.webp",
     demo: "",
     source: "https://github.com/FuSan21/PocketKaraoke",
+    tech: [
+      {
+        name: "Kotlin",
+        icon: "kotlin.png",
+      },
+      {
+        name: "Firebase",
+        icon: "firebase.png",
+      },
+    ],
   },
   {
     title: "Furnicraft BD",
@@ -322,6 +468,24 @@ export const PROJECTS = [
     image: "/projects/furni.webp",
     demo: "https://www.furnicraftbd.com",
     source: "",
+    tech: [
+      {
+        name: "HTML",
+        icon: "html.png",
+      },
+      {
+        name: "CSS",
+        icon: "css.png",
+      },
+      {
+        name: "JavaScript",
+        icon: "js.png",
+      },
+      {
+        name: "Cloudflare",
+        icon: "cloudflare.png",
+      },
+    ],
   },
   {
     title: "Federated Metaverse Dynamic Authentication",
@@ -331,6 +495,16 @@ export const PROJECTS = [
     demo: "https://github.com/FuSan21/federated-metaverse-authentication-mSAML-PKA",
     source:
       "https://github.com/FuSan21/federated-metaverse-authentication-mSAML-PKA",
+    tech: [
+      {
+        name: "FastAPI",
+        icon: "fastapi.svg",
+      },
+      {
+        name: "Python",
+        icon: "python.png",
+      },
+    ],
   },
   {
     title: "Friend Activity Grid Theme for Discord",
@@ -339,6 +513,12 @@ export const PROJECTS = [
     image: "/projects/discord-friend-activity-grid.webp",
     demo: "https://github.com/FuSan21/FriendActivityGrid/",
     source: "https://github.com/FuSan21/FriendActivityGrid/",
+    tech: [
+      {
+        name: "CSS",
+        icon: "css.png",
+      },
+    ],
   },
 ] as const;
 
@@ -390,39 +570,33 @@ export const PROFESSIONAL_PROFILES = [
 
 export const USED_TECH = [
   {
-    skill_name: "Next.js",
+    name: "Next.js",
     image: "next.png",
-    width: 70,
-    height: 70,
+    size: 70,
   },
   {
-    skill_name: "React",
+    name: "React",
     image: "react.png",
-    width: 70,
-    height: 70,
+    size: 70,
   },
   {
-    skill_name: "TypeScript",
+    name: "TypeScript",
     image: "ts.png",
-    width: 70,
-    height: 70,
+    size: 70,
   },
   {
-    skill_name: "Tailwind CSS",
+    name: "Tailwind CSS",
     image: "tailwind.png",
-    width: 70,
-    height: 70,
+    size: 70,
   },
   {
-    skill_name: "Three.js",
+    name: "Three.js",
     image: "three.svg",
-    width: 70,
-    height: 70,
+    size: 70,
   },
   {
-    skill_name: "Framer Motion",
+    name: "Framer Motion",
     image: "framer.png",
-    width: 70,
-    height: 70,
+    size: 70,
   },
 ] as const;
