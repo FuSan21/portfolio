@@ -23,7 +23,7 @@ export const ProjectCard = ({
   return (
     <motion.div
       variants={fadeIn("right", "spring", 0.5 * index, 0.75)}
-      className="relative overflow-hidden rounded-lg shadow-lg border border-[#2A0E61]"
+      className="relative overflow-hidden rounded-lg shadow-lg border border-[#2A0E61] flex flex-col h-full"
     >
       <Image
         src={src}
@@ -33,10 +33,10 @@ export const ProjectCard = ({
         className="w-full object-contain"
       />
 
-      <div className="relative p-4">
+      <div className="relative p-4 flex flex-col flex-grow">
         <h1 className="text-2xl font-semibold text-white">{title}</h1>
-        <p className="mt-2 text-gray-300">{description}</p>
-        <div className="flex space-x-4">
+        <p className="mt-2 text-gray-300 flex-grow">{description}</p>
+        <div className="flex space-x-4 mt-4">
           {demo && (
             <a
               href={demo}
