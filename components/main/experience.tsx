@@ -33,6 +33,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => (
           height={80}
           alt={experience.company_name}
           className="w-[60%] h-[60%] object-contain"
+          draggable={false}
         />
       </div>
     }

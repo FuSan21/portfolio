@@ -40,7 +40,7 @@ export const Projects = () => {
       >
         My Projects
       </h1>
-      <div className="h-full w-full flex-col md:grid md:grid-cols-3 gap-10 px-10">
+      <div className="h-full w-full flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-10 px-10">
         {currentProjects.map((project, i) => (
           <ProjectCard
             index={i}
@@ -57,14 +57,20 @@ export const Projects = () => {
       {totalPages > 1 && (
         <div className="flex justify-center mt-10">
           <button
-            className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md mr-2"
+            className={`px-4 py-2 rounded-md mr-2 ${
+              currentPage === 0 ? "bg-gray-500" : "button-primary text-white"
+            }`}
             onClick={handlePrevPage}
             disabled={currentPage === 0}
           >
             Previous
           </button>
           <button
-            className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md"
+            className={`px-4 py-2 rounded-md ${
+              currentPage === totalPages - 1
+                ? "bg-gray-500"
+                : "button-primary text-white"
+            }`}
             onClick={handleNextPage}
             disabled={currentPage === totalPages - 1}
           >

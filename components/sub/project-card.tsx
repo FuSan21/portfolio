@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/lib/motion";
 
@@ -33,6 +32,7 @@ export const ProjectCard = ({
         width={1498}
         height={842}
         className="w-full object-contain"
+        draggable={false}
       />
 
       <div className="relative p-4 flex flex-col flex-grow">

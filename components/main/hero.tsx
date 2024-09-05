@@ -36,6 +36,7 @@ const ServiceCard = ({ index, title, icon }: ServiceCardProps) => {
             width={64}
             height={64}
             className="w-16 h-16 object-contain"
+            draggable={false}
           />
           <h4 className="text-white text-[20px] font-bold text-center">
             {title}
