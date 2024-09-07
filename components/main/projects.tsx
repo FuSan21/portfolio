@@ -12,13 +12,27 @@ export const Projects = () => {
   const totalPages = Math.ceil(PROJECTS.length / projectsPerPage);
 
   const handleNextPage = () => {
-    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages - 1));
+    setCurrentPage((prevPage) => {
+      const newPage = Math.min(prevPage + 1, totalPages - 1);
+      setTimeout(() => {
+        document
+          .getElementById("projects")
+          ?.scrollIntoView({ behavior: "smooth" });
+      }, 0);
+      return newPage;
+    });
   };
 
   const handlePrevPage = () => {
-    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
+    setCurrentPage((prevPage) => {
+      const newPage = Math.max(prevPage - 1, 0);
+      setTimeout(() => {
+        document
+          .getElementById("projects")
+          ?.scrollIntoView({ behavior: "smooth" });
+      }, 0);
+      return newPage;
+    });
   };
 
   const startIndex = currentPage * projectsPerPage;
@@ -51,7 +65,6 @@ export const Projects = () => {
       <div className="h-full w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-10">
         {currentProjects.map((project, i) => {
           const columnsPerRow = getColumnsPerRow();
-          const rowIndex = Math.floor(i / columnsPerRow);
           const columnIndex = i % columnsPerRow;
           return (
             <ProjectCard
