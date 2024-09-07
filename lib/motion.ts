@@ -20,7 +20,7 @@ export const fadeIn = (
   direction: "left" | "right" | "up" | "down" | string,
   type: string,
   delay: number,
-  duration: number,
+  duration: number
 ) => {
   return {
     hidden: {
@@ -46,7 +46,7 @@ export const slideIn = (
   direction: "left" | "right" | "up" | "down" | string,
   type: string,
   delay: number,
-  duration: number,
+  duration: number
 ) => {
   return {
     hidden: {
@@ -68,7 +68,7 @@ export const slideIn = (
 
 export const staggerContainer = (
   staggerChildren?: number,
-  delayChildren?: number,
+  delayChildren?: number
 ) => {
   return {
     hidden: {},
@@ -78,5 +78,26 @@ export const staggerContainer = (
         delayChildren: delayChildren || 0,
       },
     },
+  };
+};
+
+export const skillContainerVariant = () => {
+  return {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 20,
+      },
+    },
+  };
+};
+
+export const skillIconVariant = () => {
+  return {
+    hover: { y: -5, transition: { yoyo: Infinity, duration: 0.5 } },
   };
 };

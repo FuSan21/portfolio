@@ -3,13 +3,13 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
+import { skillContainerVariant, skillIconVariant } from "@/lib/motion";
 
 type SkillDataProviderProps = {
   src: string;
   name: string;
   width: number;
   height: number;
-  index: number;
 };
 
 export const SkillDataProvider = ({
@@ -17,35 +17,21 @@ export const SkillDataProvider = ({
   name,
   width,
   height,
-  index,
 }: SkillDataProviderProps) => {
-  const { ref, inView } = useInView({
+  const [ref, inView] = useInView({
     triggerOnce: true,
+    threshold: 1,
   });
-
-  const imageVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-  };
-
-  const animationDelay = 0.1;
 
   return (
     <motion.div
       ref={ref}
+      variants={skillContainerVariant()}
       initial="hidden"
-      variants={imageVariants}
       animate={inView ? "visible" : "hidden"}
-      custom={index}
-      transition={{ delay: index * animationDelay }}
+      className="flex flex-col items-center"
     >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
+      <motion.div variants={skillIconVariant()} whileHover="hover">
         <Image
           src={`/skills/${src}`}
           width={width}
@@ -54,8 +40,8 @@ export const SkillDataProvider = ({
           title={name}
           className="h-20 w-20"
         />
-        <p className="text-center text-white font-bold">{name}</p>
-      </div>
+      </motion.div>
+      <p className="text-center text-white font-bold mt-2">{name}</p>
     </motion.div>
   );
 };
