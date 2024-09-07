@@ -1,9 +1,11 @@
+import { useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { fadeIn } from "@/lib/motion";
 
 type ProjectCardProps = {
-  index: number;
+  columnIndex: number;
+  columnsInRow: number;
   src: string;
   title: string;
   description: string;
@@ -13,7 +15,7 @@ type ProjectCardProps = {
 };
 
 export const ProjectCard = ({
-  index,
+  columnIndex,
   src,
   title,
   description,
@@ -21,9 +23,15 @@ export const ProjectCard = ({
   source,
   tech,
 }: ProjectCardProps) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+
   return (
     <motion.div
-      variants={fadeIn("right", "spring", 0.5 * index, 0.75)}
+      ref={ref}
+      variants={fadeIn("up", "spring", 0.5 * columnIndex, 0.75)}
+      initial="hidden"
+      animate={isInView ? "show" : "hidden"}
       className="relative overflow-hidden rounded-lg shadow-lg border border-[#2A0E61] flex flex-col h-full"
     >
       <Image
@@ -45,9 +53,9 @@ export const ProjectCard = ({
                 href={demo}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="flex items-center p-2.5 button-primary text-center text-white cursor-pointer rounded-lg"
+                className="flex items-center justify-center p-2.5 button-primary text-center text-white cursor-pointer rounded-lg"
               >
-                <span>{"Demo"}</span>
+                <span>Demo</span>
               </a>
             )}
             {source && (
@@ -55,9 +63,9 @@ export const ProjectCard = ({
                 href={source}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="flex items-center p-2.5 button-primary text-center text-white cursor-pointer rounded-lg"
+                className="flex items-center justify-center p-2.5 button-primary text-center text-white cursor-pointer rounded-lg"
               >
-                <span>{"Source"}</span>
+                <span>Source</span>
               </a>
             )}
           </div>

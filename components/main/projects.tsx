@@ -25,9 +25,17 @@ export const Projects = () => {
   const endIndex = startIndex + projectsPerPage;
   const currentProjects = PROJECTS.slice(startIndex, endIndex);
 
+  const getColumnsPerRow = () => {
+    if (typeof window !== "undefined") {
+      if (window.innerWidth >= 1024) return 3; // lg screens
+      if (window.innerWidth >= 768) return 2; // md screens
+      return 1; // sm screens
+    }
+    return 3; // default to 3 for SSR
+  };
+
   return (
     <motion.section
-      key={currentPage}
       variants={staggerContainer(0.1, 0.2)}
       initial="hidden"
       whileInView="show"
@@ -40,19 +48,25 @@ export const Projects = () => {
       >
         My Projects
       </h1>
-      <div className="h-full w-full flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-10 px-10">
-        {currentProjects.map((project, i) => (
-          <ProjectCard
-            index={i}
-            key={project.title}
-            src={project.image}
-            title={project.title}
-            description={project.description}
-            demo={project.demo}
-            source={project.source}
-            tech={project.tech}
-          />
-        ))}
+      <div className="h-full w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-10">
+        {currentProjects.map((project, i) => {
+          const columnsPerRow = getColumnsPerRow();
+          const rowIndex = Math.floor(i / columnsPerRow);
+          const columnIndex = i % columnsPerRow;
+          return (
+            <ProjectCard
+              key={project.title}
+              columnIndex={columnIndex}
+              columnsInRow={columnsPerRow}
+              src={project.image}
+              title={project.title}
+              description={project.description}
+              demo={project.demo}
+              source={project.source}
+              tech={project.tech}
+            />
+          );
+        })}
       </div>
       {totalPages > 1 && (
         <div className="flex justify-center mt-10">
