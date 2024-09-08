@@ -76,7 +76,7 @@ export const ProjectCard = memo(
               {tech.map((item, i) => (
                 <div key={i} className="px-2 py-1 rounded-md relative group">
                   <Image
-                    src={"/skills/" + item.icon}
+                    src={`/skills/${item.icon}`}
                     alt={item.name}
                     width={20}
                     height={20}

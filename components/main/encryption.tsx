@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+import { cedarvilleCursive } from "@/app/fonts";
 import { fadeIn, staggerContainer } from "@/lib/motion";
 
 export const Encryption = () => {
@@ -54,7 +55,9 @@ export const Encryption = () => {
       </motion.div>
 
       <div className="absolute z-[20] bottom-[10px] px-[5px]">
-        <div className="cursive text-[20px] font-medium text-center text-gray-300">
+        <div
+          className={`${cedarvilleCursive.className} text-[20px] font-medium text-center text-gray-300`}
+        >
           Secure your data with end-to-end encryption.
         </div>
       </div>
