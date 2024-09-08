@@ -38,9 +38,9 @@ const ServiceCard = ({ index, title, icon }: ServiceCardProps) => {
             className="w-16 h-16 object-contain"
             draggable={false}
           />
-          <h4 className="text-white text-[20px] font-bold text-center">
+          <h2 className="text-white text-[20px] font-bold text-center">
             {title}
-          </h4>
+          </h2>
         </div>
       </motion.div>
     </Tilt>

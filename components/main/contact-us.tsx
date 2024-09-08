@@ -100,9 +100,9 @@ export const Contact = () => {
             <p className="sm:text-[18px] text-[14px] text-[#aaa6c3] uppercase tracking-wider">
               Get in touch
             </p>
-            <h3 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
+            <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
               Contact.
-            </h3>
+            </h2>
 
             {/* Form */}
             <form
