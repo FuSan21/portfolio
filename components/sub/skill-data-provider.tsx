@@ -34,8 +34,8 @@ export const SkillDataProvider = ({
       <motion.div variants={skillIconVariant()} whileHover="hover">
         <Image
           src={`/skills/${src}`}
-          width={width}
-          height={height}
+          width={80}
+          height={80}
           alt={name}
           title={name}
           className="h-20 w-20"

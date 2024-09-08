@@ -17,7 +17,8 @@ export const Navbar = () => {
             width={70}
             height={70}
             draggable={false}
-            className="cursor-pointer hover:animate-slowspin"
+            className="cursor-pointer hover:animate-spin w-[70px] h-[70px]"
+            priority
           />
           <div className="font-bold ml-[10px] text-gray-300">Fuad Hasan</div>
         </Link>

@@ -37,14 +37,14 @@ export const Encryption = () => {
             alt="Lock top"
             width={50}
             height={50}
-            className="translate-y-5 transition-all duration-200 group-hover:translate-y-11"
+            className="translate-y-5 transition-all duration-200 group-hover:translate-y-11 w-[50px] h-[50px]"
           />
           <Image
             src="/lock-main.png"
             alt="Lock main"
             width={70}
             height={70}
-            className="z-10"
+            className="z-10 w-[70px] h-[70px]"
           />
         </div>
 
