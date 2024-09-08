@@ -22,76 +22,39 @@ export const Contact = () => {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-
-    setForm({ ...form, [name]: value });
+    setForm((prevForm) => ({ ...prevForm, [name]: value }));
   };
 
   // validate form on submit
   const validateForm = () => {
-    // form fields
     const { name, email, message } = form;
+    const errors: Record<string, boolean> = {};
 
-    type Current = {
-      name: boolean;
-      email: boolean;
-      message: boolean;
-    };
-
-    // Error message
-    const nameError = document.querySelector("#name-error")!;
-    const emailError = document.querySelector("#email-error")!;
-    const messageError = document.querySelector("#message-error")!;
-    const current: Current = { name: false, email: false, message: false };
-
-    // validate name
-    if (name.trim().length < 3) {
-      nameError.classList.remove("hidden");
-      current["name"] = false;
-    } else {
-      nameError.classList.add("hidden");
-      current["name"] = true;
-    }
-    const email_regex =
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-    // valiate email
-    if (!email.trim().toLowerCase().match(email_regex)) {
-      emailError.classList.remove("hidden");
-      current["email"] = false;
-    } else {
-      emailError.classList.add("hidden");
-      current["email"] = true;
-    }
-
-    // validate message
-    if (message.trim().length < 5) {
-      messageError.classList.remove("hidden");
-      current["message"] = false;
-    } else {
-      messageError.classList.add("hidden");
-      current["message"] = true;
-    }
-
-    // True if all fields are validated
-    return Object.keys(current).every(
-      (k) => current[k as keyof typeof current]
+    errors.name = name.trim().length < 3;
+    errors.email = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+      email.trim().toLowerCase()
     );
+    errors.message = message.trim().length < 5;
+
+    Object.entries(errors).forEach(([field, hasError]) => {
+      const errorElement = document.querySelector(`#${field}-error`);
+      if (errorElement) {
+        errorElement.classList.toggle("hidden", !hasError);
+      }
+    });
+
+    return Object.values(errors).every((error) => !error);
   };
 
   // handle form submit
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    // prevent default page reload
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!validateForm()) return;
 
-    // validate form
-    if (!validateForm()) return false;
-
-    // show loader
     setLoading(true);
 
-    // send email
-    emailjs
-      .send(
+    try {
+      await emailjs.send(
         process.env.NEXT_PUBLIC_SERVICE_ID || "",
         process.env.NEXT_PUBLIC_TEMPLATE_ID || "",
         {
@@ -103,21 +66,15 @@ export const Contact = () => {
           message: form.message,
         },
         process.env.NEXT_PUBLIC_EMAILJS_KEY
-      )
-      .then(() => toast.success("Thanks for contacting me."))
-      .catch((error) => {
-        // Error handle
-        console.log("[CONTACT_ERROR]: ", error);
-        toast.error("Something went wrong.");
-      })
-      .finally(() => {
-        setLoading(false);
-        setForm({
-          name: "",
-          email: "",
-          message: "",
-        });
-      });
+      );
+      toast.success("Thanks for contacting me.");
+    } catch (error) {
+      console.error("[CONTACT_ERROR]: ", error);
+      toast.error("Something went wrong.");
+    } finally {
+      setLoading(false);
+      setForm({ name: "", email: "", message: "" });
+    }
   };
 
   return (
