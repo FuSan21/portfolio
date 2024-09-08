@@ -12,56 +12,61 @@ import { EXPERIENCES } from "@/constants";
 import { textVariant } from "@/lib/motion";
 
 import "react-vertical-timeline-component/style.min.css";
+import { useInView } from "react-intersection-observer";
 
 type ExperienceCardProps = {
   experience: (typeof EXPERIENCES)[number];
 };
 
 // Experience Card
-const ExperienceCard = ({ experience }: ExperienceCardProps) => (
-  <VerticalTimelineElement
-    contentStyle={{ background: "#1d1836", color: "#fff" }}
-    contentArrowStyle={{ borderRight: "7px solid #232631" }}
-    date={experience.date}
-    iconStyle={{ background: experience.iconBg }}
-    visible={true}
-    icon={
-      <div className="flex justify-center items-center w-full h-full">
-        <Image
-          src={`/experiences/${experience.icon}`}
-          width={80}
-          height={80}
-          alt={experience.company_name}
-          className="w-[60%] h-[60%] object-contain"
-          draggable={false}
-        />
-      </div>
-    }
-  >
-    {/* Title */}
-    <div>
-      <h3 className="text-white text-[24px] font-bold">{experience.title}</h3>
-      <p
-        className="text-secondary text-[16px] font-semibold"
-        style={{ margin: 0 }}
-      >
-        {experience.company_name}
-      </p>
-    </div>
+const ExperienceCard = ({ experience }: ExperienceCardProps) => {
+  const { ref, inView } = useInView({ threshold: 0.25, triggerOnce: true });
 
-    {/* Experience Points */}
-    <ul className="mt-5 list-disc ml-5 space-y-2">
-      {experience.points.map((point, i) => (
-        <li
-          key={`experience-point-${i}`}
-          className="text-white-100 text-[14px] pl-1 tracking-wider"
+  return (
+    <VerticalTimelineElement
+      contentStyle={{ background: "#1d1836", color: "#fff" }}
+      contentArrowStyle={{ borderRight: "7px solid #232631" }}
+      date={experience.date}
+      iconStyle={{ background: experience.iconBg }}
+      visible={inView}
+      icon={
+        <div className="flex justify-center items-center w-full h-full">
+          <Image
+            src={`/experiences/${experience.icon}`}
+            width={80}
+            height={80}
+            alt={experience.company_name}
+            className="w-[60%] h-[60%] object-contain"
+            draggable={false}
+          />
+        </div>
+      }
+    >
+      {/* Title */}
+      <div ref={ref}>
+        <h3 className="text-white text-[24px] font-bold">{experience.title}</h3>
+        <p
+          className="text-secondary text-[16px] font-semibold"
+          style={{ margin: 0 }}
         >
-          {parseStringWithBold(point)}
-        </li>
-      ))}
-    </ul>
-  </VerticalTimelineElement>
-);
+          {experience.company_name}
+        </p>
+      </div>
+
+      {/* Experience Points */}
+      <ul className="mt-5 list-disc ml-5 space-y-2">
+        {experience.points.map((point, i) => (
+          <li
+            key={`experience-point-${i}`}
+            className="text-white-100 text-[14px] pl-1 tracking-wider"
+          >
+            {parseStringWithBold(point)}
+          </li>
+        ))}
+      </ul>
+    </VerticalTimelineElement>
+  );
+};
 
 // Experience
 export const Experience = () => {
