@@ -27,7 +27,10 @@ export const Encryption = () => {
         </motion.div>
       </div>
 
-      <div className="flex flex-col items-center justify-center translate-y-[-50px] absolute z-[20] w-auto h-auto">
+      <motion.div
+        variants={fadeIn("up", "spring", 1, 1.25)}
+        className="flex flex-col items-center justify-center translate-y-[-50px] absolute z-[20] w-auto h-auto"
+      >
         <div className="flex flex-col items-center group cursor-pointer w-auto h-auto">
           <Image
             src="/lock-top.png"
@@ -48,7 +51,7 @@ export const Encryption = () => {
         <div className="Welcome-box px-[15px] py-[4px] z-[20] border my-[20px] border-[#7042F88B] opacity-[0.9]">
           <h1 className="Welcome-text text-[12px]">Encryption</h1>
         </div>
-      </div>
+      </motion.div>
 
       <div className="absolute z-[20] bottom-[10px] px-[5px]">
         <div className="cursive text-[20px] font-medium text-center text-gray-300">
