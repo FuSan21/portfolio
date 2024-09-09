@@ -4,6 +4,7 @@ import { SparklesIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 
 import { slideIn } from "@/lib/motion";
+import { cedarvilleCursive } from "@/app/fonts";
 
 export const SkillText = () => {
   return (
@@ -27,7 +28,7 @@ export const SkillText = () => {
 
       <motion.div
         variants={slideIn("right", "tween", 0.5, 0.5)}
-        className="cursive text-[20px] text-gray-200 mb-10 mt-[10px] text-center"
+        className={`${cedarvilleCursive.className} text-[20px] text-gray-200 mb-10 mt-[10px] text-center`}
       >
         From Concepts to Code Blocks.
       </motion.div>
