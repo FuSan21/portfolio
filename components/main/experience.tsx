@@ -20,7 +20,7 @@ type ExperienceCardProps = {
 
 // Experience Card
 const ExperienceCard = ({ experience }: ExperienceCardProps) => {
-  const { ref, inView } = useInView({ threshold: 0.25, triggerOnce: true });
+  const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
 
   return (
     <VerticalTimelineElement
@@ -51,19 +51,19 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
         >
           {experience.company_name}
         </p>
-      </div>
 
-      {/* Experience Points */}
-      <ul className="mt-5 list-disc ml-5 space-y-2">
-        {experience.points.map((point, i) => (
-          <li
-            key={`experience-point-${i}`}
-            className="text-white-100 text-[14px] pl-1 tracking-wider"
-          >
-            {parseStringWithBold(point)}
-          </li>
-        ))}
-      </ul>
+        {/* Experience Points */}
+        <ul className="mt-5 list-disc ml-5 space-y-2">
+          {experience.points.map((point, i) => (
+            <li
+              key={`experience-point-${i}`}
+              className="text-white-100 text-[14px] pl-1 tracking-wider"
+            >
+              {parseStringWithBold(point)}
+            </li>
+          ))}
+        </ul>
+      </div>
     </VerticalTimelineElement>
   );
 };

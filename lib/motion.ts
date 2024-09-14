@@ -101,3 +101,17 @@ export const skillIconVariant = () => {
     hover: { y: -5, transition: { yoyo: Infinity, duration: 0.5 } },
   };
 };
+
+export const lockVariants = () => {
+  return {
+    hidden: { y: 0 },
+    visible: {
+      y: [0, -10, 0],
+      transition: {
+        repeat: Infinity,
+        duration: 2,
+        ease: "easeInOut",
+      },
+    },
+  };
+};
