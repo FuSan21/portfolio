@@ -9,7 +9,7 @@ import {
 
 import { parseStringWithBold } from "@/lib/utils";
 import { EXPERIENCES } from "@/constants";
-import { textVariant } from "@/lib/motion";
+import { fadeIn } from "@/lib/motion";
 
 import "react-vertical-timeline-component/style.min.css";
 import { useInView } from "react-intersection-observer";
@@ -102,7 +102,7 @@ export const Experience = () => {
       </span>
       {/* Title */}
       <motion.div
-        variants={textVariant()}
+        variants={fadeIn("down", "spring", 0.5, 1)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 1 }}
@@ -128,7 +128,7 @@ export const Experience = () => {
       </div>
 
       <motion.div
-        variants={textVariant()}
+        variants={fadeIn("down", "spring", 0.5, 0.5)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 1 }}

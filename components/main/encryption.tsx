@@ -4,21 +4,18 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 import { cedarvilleCursive } from "@/app/fonts";
-import { fadeIn, staggerContainer, lockVariants } from "@/lib/motion";
+import { fadeIn, lockVariants } from "@/lib/motion";
 
 export const Encryption = () => {
   return (
-    <motion.section
-      className="flex flex-row relative items-center justify-center min-h-screen w-full h-full -z-20"
-      variants={staggerContainer()}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.25 }}
-    >
+    <section className="flex flex-row relative items-center justify-center min-h-screen w-full h-full -z-20">
       <div className="absolute w-auto h-auto top-0 z-[5]">
         <motion.div
-          variants={fadeIn("up", "spring", 0.5, 1.25)}
           className="text-[40px] font-medium text-center text-gray-200"
+          variants={fadeIn("up", "spring", 0, 1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 1 }}
         >
           Performance{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
@@ -29,8 +26,11 @@ export const Encryption = () => {
       </div>
 
       <motion.div
-        variants={fadeIn("up", "spring", 1, 1.25)}
         className="flex flex-col items-center justify-center absolute z-[20] w-auto h-auto"
+        variants={fadeIn("up", "spring", 0, 1)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 1 }}
       >
         <motion.div
           className="flex flex-col items-center group cursor-pointer w-auto h-auto"
@@ -79,6 +79,6 @@ export const Encryption = () => {
           <source src="/videos/encryption-bg.webm" type="video/webm" />
         </video>
       </div>
-    </motion.section>
+    </section>
   );
 };
