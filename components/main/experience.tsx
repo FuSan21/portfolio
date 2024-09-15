@@ -8,18 +8,19 @@ import {
 } from "react-vertical-timeline-component";
 
 import { parseStringWithBold } from "@/lib/utils";
-import { EXPERIENCES } from "@/constants";
+import { JOB_EXPERIENCES, EDUCATION_EXPERIENCES } from "@/constants";
 import { textVariant } from "@/lib/motion";
 
 import "react-vertical-timeline-component/style.min.css";
 import { useInView } from "react-intersection-observer";
 
 type ExperienceCardProps = {
-  experience: (typeof EXPERIENCES)[number];
+  experience: (typeof JOB_EXPERIENCES | typeof EDUCATION_EXPERIENCES)[number];
+  position?: "left" | "right";
 };
 
 // Experience Card
-const ExperienceCard = ({ experience }: ExperienceCardProps) => {
+const ExperienceCard = ({ experience, position }: ExperienceCardProps) => {
   const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
 
   return (
@@ -29,13 +30,14 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       visible={inView}
+      position={position}
       icon={
         <div className="flex justify-center items-center w-full h-full">
           <Image
             src={`/experiences/${experience.icon}`}
             width={80}
             height={80}
-            alt={experience.company_name}
+            alt={experience.name}
             className="w-[60%] h-[60%] object-contain"
             draggable={false}
           />
@@ -49,20 +51,29 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
           className="text-secondary text-[16px] font-semibold"
           style={{ margin: 0 }}
         >
-          {experience.company_name}
+          {experience.name}
         </p>
 
         {/* Experience Points */}
-        <ul className="mt-5 list-disc ml-5 space-y-2">
-          {experience.points.map((point, i) => (
-            <li
-              key={`experience-point-${i}`}
-              className="text-white-100 text-[14px] pl-1 tracking-wider"
-            >
-              {parseStringWithBold(point)}
-            </li>
-          ))}
-        </ul>
+        {"points" in experience && (
+          <ul className="mt-5 list-disc ml-5 space-y-2">
+            {experience.points.map((point, i) => (
+              <li
+                key={`experience-point-${i}`}
+                className="text-white-100 text-[14px] pl-1 tracking-wider"
+              >
+                {parseStringWithBold(point)}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {/* cgpa */}
+        {"cgpa" in experience && (
+          <p className="text-white-100 text-[14px] pl-1 tracking-wider">
+            CGPA: {parseStringWithBold(experience.cgpa)}
+          </p>
+        )}
       </div>
     </VerticalTimelineElement>
   );
@@ -94,8 +105,23 @@ export const Experience = () => {
       {/* Experience Card */}
       <div className="empty-20 flex flex-col">
         <VerticalTimeline>
-          {EXPERIENCES.map((experience, i) => (
+          {JOB_EXPERIENCES.map((experience, i) => (
             <ExperienceCard key={i} experience={experience} />
+          ))}
+        </VerticalTimeline>
+      </div>
+
+      <motion.div variants={textVariant()}>
+        <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
+          Education Experience.
+        </h2>
+      </motion.div>
+
+      {/* Experience Card */}
+      <div className="empty-20 flex flex-col">
+        <VerticalTimeline>
+          {EDUCATION_EXPERIENCES.map((experience, i) => (
+            <ExperienceCard key={i} experience={experience} position="right" />
           ))}
         </VerticalTimeline>
       </div>

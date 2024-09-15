@@ -22,22 +22,38 @@ export const SERVICES = [
   },
 ] as const;
 
-export const EXPERIENCES = [
+export const EDUCATION_EXPERIENCES = [
   {
-    title: "Self-Employed",
-    company_name: "Wordpress Content Creator/Developer",
+    title: "B.Sc. in Computer Science and Engineering",
+    name: "Brac University",
+    icon: "bracu.webp",
+    iconBg: "#E6DEDD",
+    date: "Jan 2020 - Jan 2024",
+    cgpa: "**3.82**",
+  },
+] as const;
+
+export const JOB_EXPERIENCES = [
+  {
+    title: "Full Stack Web Developer",
+    name: "Tekinouchi",
     icon: "tekinouchi.png",
     iconBg: "#E6DEDD",
-    date: "Feb 2019 - Jul 2023",
+    date: "Jan 2023 - Present",
     points: [
-      "Delivered high-quality, insightful, informative, and entertaining written content.",
-      "Set up the hosting environment in **AWS EC2, Lightsail** and custom **cpanel hostings**.",
-      "Implemented automated scraping using **Selenium** python library and published content using **wordpress REST API.**",
+      "Maintained strong skill set in various technologies to update, optimize and rectify issues with corporate website.",
+      "Maintained  version control systems such as **Git** in order to keep track of changes made to the source code.",
+      "Provided technical support and troubleshooting services when needed.",
+      "Designed creative user interfaces for websites with a focus on usability",
+      "Developed, tested and debugged web applications using **HTML5, CSS3, JS and Laravel**",
+      "Modified existing WordPress plugin or theme to add functionality.",
+      "Configured databases such as **MySQL** in order to store data securely",
+      "Integrated **third-party APIs** into web applications for enhanced functionality",
     ],
   },
   {
     title: "Frontend Web Developer",
-    company_name: "Fiver",
+    name: "Fiver",
     icon: "fiver.png",
     iconBg: "#383E56",
     date: "Feb 2023 - Jul 2023",
@@ -49,20 +65,15 @@ export const EXPERIENCES = [
     ],
   },
   {
-    title: "Full Stack Web Developer",
-    company_name: "Tekinouchi",
+    title: "Self-Employed",
+    name: "Wordpress Content Creator/Developer",
     icon: "tekinouchi.png",
     iconBg: "#E6DEDD",
-    date: "May 2023 - Present",
+    date: "Feb 2019 - Jul 2023",
     points: [
-      "Maintained strong skill set in various technologies to update, optimize and rectify issues with corporate website.",
-      "Maintained  version control systems such as **Git** in order to keep track of changes made to the source code.",
-      "Provided technical support and troubleshooting services when needed.",
-      "Designed creative user interfaces for websites with a focus on usability",
-      "Developed, tested and debugged web applications using **HTML5, CSS3, JS and Laravel**",
-      "Modified existing WordPress plugin or theme to add functionality.",
-      "Configured databases such as **MySQL** in order to store data securely",
-      "Integrated **third-party APIs** into web applications for enhanced functionality",
+      "Delivered high-quality, insightful, informative, and entertaining written content.",
+      "Set up the hosting environment in **AWS EC2, Lightsail** and custom **cpanel hostings**.",
+      "Implemented automated scraping using **Selenium** python library and published content using **wordpress REST API.**",
     ],
   },
 ] as const;
