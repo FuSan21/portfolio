@@ -8,19 +8,24 @@ import {
 } from "react-vertical-timeline-component";
 
 import { parseStringWithBold } from "@/lib/utils";
-import { JOB_EXPERIENCES, EDUCATION_EXPERIENCES } from "@/constants";
+import { EXPERIENCES } from "@/constants";
 import { textVariant } from "@/lib/motion";
 
 import "react-vertical-timeline-component/style.min.css";
 import { useInView } from "react-intersection-observer";
 
 type ExperienceCardProps = {
-  experience: (typeof JOB_EXPERIENCES | typeof EDUCATION_EXPERIENCES)[number];
+  experience: (typeof EXPERIENCES)[keyof typeof EXPERIENCES][number];
+  type: keyof typeof EXPERIENCES;
   position?: "left" | "right";
 };
 
 // Experience Card
-const ExperienceCard = ({ experience, position }: ExperienceCardProps) => {
+const ExperienceCard = ({
+  experience,
+  type,
+  position,
+}: ExperienceCardProps) => {
   const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
 
   return (
@@ -55,11 +60,11 @@ const ExperienceCard = ({ experience, position }: ExperienceCardProps) => {
         </p>
 
         {/* Experience Points */}
-        {"points" in experience && (
+        {type === "job" && (
           <ul className="mt-5 list-disc ml-5 space-y-2">
             {experience.points.map((point, i) => (
               <li
-                key={`experience-point-${i}`}
+                key={`job-experience-point-${i}`}
                 className="text-white-100 text-[14px] pl-1 tracking-wider"
               >
                 {parseStringWithBold(point)}
@@ -69,10 +74,17 @@ const ExperienceCard = ({ experience, position }: ExperienceCardProps) => {
         )}
 
         {/* cgpa */}
-        {"cgpa" in experience && (
-          <p className="text-white-100 text-[14px] pl-1 tracking-wider">
-            CGPA: {parseStringWithBold(experience.cgpa)}
-          </p>
+        {type === "education" && (
+          <ul className="mt-5 list-disc ml-5 space-y-2">
+            {experience.points.map((point, i) => (
+              <li
+                key={`education-experience-point-${i}`}
+                className="text-white-100 text-[14px] pl-1 tracking-wider"
+              >
+                {parseStringWithBold(point)}
+              </li>
+            ))}
+          </ul>
         )}
       </div>
     </VerticalTimelineElement>
@@ -89,7 +101,12 @@ export const Experience = () => {
         &nbsp;
       </span>
       {/* Title */}
-      <motion.div variants={textVariant()}>
+      <motion.div
+        variants={textVariant()}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 1 }}
+      >
         <p
           className={
             "sm:text-[18px] text-[14px] text-gray-400 font-black uppercase tracking-wider"
@@ -102,26 +119,34 @@ export const Experience = () => {
         </h2>
       </motion.div>
 
-      {/* Experience Card */}
-      <div className="empty-20 flex flex-col">
+      <div className="flex flex-col">
         <VerticalTimeline>
-          {JOB_EXPERIENCES.map((experience, i) => (
-            <ExperienceCard key={i} experience={experience} />
+          {EXPERIENCES.job.map((experience, i) => (
+            <ExperienceCard key={i} experience={experience} type="job" />
           ))}
         </VerticalTimeline>
       </div>
 
-      <motion.div variants={textVariant()}>
+      <motion.div
+        variants={textVariant()}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 1 }}
+      >
         <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
           Education Experience.
         </h2>
       </motion.div>
 
-      {/* Experience Card */}
-      <div className="empty-20 flex flex-col">
+      <div className="flex flex-col">
         <VerticalTimeline>
-          {EDUCATION_EXPERIENCES.map((experience, i) => (
-            <ExperienceCard key={i} experience={experience} position="right" />
+          {EXPERIENCES.education.map((experience, i) => (
+            <ExperienceCard
+              key={i}
+              experience={experience}
+              type="education"
+              position="right"
+            />
           ))}
         </VerticalTimeline>
       </div>
