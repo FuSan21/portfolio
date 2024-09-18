@@ -145,7 +145,7 @@ export const Experience = () => {
               key={i}
               experience={experience}
               type="education"
-              position="right"
+              position={EXPERIENCES.job.length % 2 === 0 ? "left" : "right"}
             />
           ))}
         </VerticalTimeline>

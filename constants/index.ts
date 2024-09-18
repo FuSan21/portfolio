@@ -38,6 +38,20 @@ export const EXPERIENCES = {
   ],
   job: [
     {
+      title: "Associate Software Engineer",
+      name: "All Generation Tech",
+      icon: "agt.png",
+      iconBg: "#E6DEDD",
+      date: "March 2024 - Present",
+      points: [
+        "Developing and maintaining applications using **Unqork Low Code/No Code platform** to deliver business solutions efficiently.",
+        "Collaborating with cross-functional teams to design, implement, and optimize workflows and user interfaces.",
+        "Customizing and configuring **Unqork components** to meet specific client requirements.",
+        "Troubleshooting and resolving issues in applications built on the **Unqork platform**.",
+        "Ensuring the performance, security, and scalability of applications in a fast-paced development environment.",
+      ],
+    },
+    {
       title: "Full Stack Web Developer",
       name: "Tekinouchi",
       icon: "tekinouchi.png",
