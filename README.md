@@ -1,8 +1,8 @@
 <a name="readme-top"></a>
 
-# Modern Space Theme Portfolio using Next.js 14 and Three.js
+# Modern Space Theme Portfolio using Next.js 15 and Three.js
 
-![Modern Space Theme Portfolio using Next.js 14 and Three.js](/.github/images/img_main.png "Modern Space Theme Portfolio using Next.js 14 and Three.js")
+![Modern Space Theme Portfolio using Next.js 15 and Three.js](/.github/images/img_main.png "Modern Space Theme Portfolio using Next.js 15 and Three.js")
 
 [![Ask Me Anything!](https://flat.badgen.net/static/Ask%20me/anything?icon=github&color=black&scale=1.01)](https://github.com/FuSan21 "Ask Me Anything!")
 [![GitHub license](https://flat.badgen.net/github/license/FuSan21/portfolio?icon=github&color=black&scale=1.01)](https://github.com/FuSan21/portfolio/blob/main/LICENSE "GitHub license")
@@ -11,7 +11,7 @@
 [![Github commits](https://flat.badgen.net/github/commits/FuSan21/portfolio?icon=github&color=black&scale=1.01)](https://github.com/FuSan21/portfolio/commits "Github commits")
 [![GitHub issues](https://flat.badgen.net/github/issues/FuSan21/portfolio?icon=github&color=black&scale=1.01)](https://github.com/FuSan21/portfolio/issues "GitHub issues")
 [![GitHub pull requests](https://flat.badgen.net/github/prs/FuSan21/portfolio?icon=github&color=black&scale=1.01)](https://github.com/FuSan21/portfolio/pulls "GitHub pull requests")
-[![Netlify Status](https://api.netlify.com/api/v1/badges/451ed0e0-3541-474e-896a-4987e30a7722/deploy-status)](https://spaceportfolio.netlify.app/ "Netlify Status")
+[![Vercel](https://vercelbadge.vercel.app/api/FuSan21/portfolio?style=flat-square)](https://www.fusan.live)
 
 <!-- Table of Contents -->
 <details>
@@ -44,6 +44,14 @@ Here is the folder structure of this app.
 
 ```bash
 space-portfolio/
+  |- .github/
+    |-- images/
+        |--- img_main.png
+        |--- img1.png
+        |--- img2.png
+        |--- img3.png
+        |--- img4.png
+        |--- stats.svg
   |- app/
     |-- favicon.ico
     |-- globals.css
@@ -51,13 +59,15 @@ space-portfolio/
     |-- page.tsx
   |- components/
     |-- main/
+        |--- contact-us.tsx
         |--- encryption.tsx
+        |--- experience.tsx
         |--- footer.tsx
         |--- hero.tsx
         |--- navbar.tsx
         |--- projects.tsx
-        |--- skills.tsx
-        |--- star-background.tsx
+        |-- skills.tsx
+        |-- star-background.tsx
     |-- sub/
         |--- hero-content.tsx
         |--- project-card.tsx
@@ -71,15 +81,22 @@ space-portfolio/
     |-- motion.ts
     |-- utils.ts
   |- public/
+    |-- CV/
+        |--- MdFuadHasan.pdf
     |-- projects/
     |-- skills/
     |-- videos/
+        |--- skills-bg.webm
     |-- hero-bg.svg
     |-- lock-main.png
     |-- lock-top.png
     |-- logo.png
   |- .eslintrc.json
   |- .gitignore
+  |- CONTRIBUTING.md
+  |- LICENSE
+  |- README.md
+  |- SECURITY.md
   |- next.config.js
   |- package-lock.json
   |- package.json
@@ -112,7 +129,7 @@ space-portfolio/
 
 ## :gear: Tech Stack
 
-[![React JS](https://skillicons.dev/icons?i=react "React JS")](https://react.dev/ "React JS") [![Next JS](https://skillicons.dev/icons?i=next "Next JS")](https://nextjs.org/ "Next JS") [![Typescript](https://skillicons.dev/icons?i=ts "Typescript")](https://www.typescriptlang.org/ "Typescript") [![Tailwind CSS](https://skillicons.dev/icons?i=tailwind "Tailwind CSS")](https://tailwindcss.com/ "Tailwind CSS") [![Netlify](https://skillicons.dev/icons?i=netlify "Netlify")](https://netlify.app/ "Netlify") [![Three.js](https://skillicons.dev/icons?i=threejs "Three.js")](https://threejs.org/ "Three.js")
+[![React JS](https://skillicons.dev/icons?i=react "React JS")](https://react.dev/ "React JS") [![Next JS](https://skillicons.dev/icons?i=next "Next JS")](https://nextjs.org/ "Next JS") [![Typescript](https://skillicons.dev/icons?i=ts "Typescript")](https://www.typescriptlang.org/ "Typescript") [![Tailwind CSS](https://skillicons.dev/icons?i=tailwind "Tailwind CSS")](https://tailwindcss.com/ "Tailwind CSS") [![Vercel](https://skillicons.dev/icons?i=vercel "Vercel")](https://vercel.com/ "Vercel") [![Three.js](https://skillicons.dev/icons?i=threejs "Three.js")](https://threejs.org/ "Three.js")
 
 ## :wrench: Stats
 
@@ -126,27 +143,27 @@ You might encounter some bugs while using this app. You are more than welcome to
 
 Useful resources and dependencies that are used in Space Portfolio.
 
-- [@heroicons/react](https://www.npmjs.com/package/@heroicons/react): ^2.1.1
-- [@react-three/drei](https://www.npmjs.com/package/@react-three/drei): ^9.93.0
-- [@react-three/fiber](https://www.npmjs.com/package/@react-three/fiber): ^8.15.13
-- [clsx](https://www.npmjs.com/package/clsx): ^2.1.0
-- [framer-motion](https://www.npmjs.com/package/framer-motion): ^10.17.12
-- [next](https://www.npmjs.com/package/next): 14.0.4
-- [react](https://www.npmjs.com/package/react): ^18
-- [react-dom](https://www.npmjs.com/package/react-dom): ^18
-- [react-icons](https://www.npmjs.com/package/react-icons): ^5.0.1
-- [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer): ^9.5.3
-- [tailwind-merge](https://www.npmjs.com/package/tailwind-merge): ^2.2.0
-- [three](https://www.npmjs.com/package/three): ^0.160.0
-- [@types/node](https://www.npmjs.com/package/@types/node): ^20
-- [@types/react](https://www.npmjs.com/package/@types/react): ^18
-- [@types/react-dom](https://www.npmjs.com/package/@types/react-dom): ^18
-- [autoprefixer](https://www.npmjs.com/package/autoprefixer): ^10.0.1
-- [eslint](https://www.npmjs.com/package/eslint): ^8
-- [eslint-config-next](https://www.npmjs.com/package/eslint-config-next): 14.0.4
-- [postcss](https://www.npmjs.com/package/postcss): ^8
-- [tailwindcss](https://www.npmjs.com/package/tailwindcss): ^3.3.0
-- [typescript](https://www.npmjs.com/package/typescript): ^5
+- [@emailjs/browser](https://www.npmjs.com/package/@emailjs/browser): ^4.4.1
+- [@heroicons/react](https://www.npmjs.com/package/@heroicons/react): ^2.2.0
+- [@next/env](https://www.npmjs.com/package/@next/env): 15.0.3
+- [@react-three/drei](https://www.npmjs.com/package/@react-three/drei): ^9.117.3
+- [@react-three/fiber](https://www.npmjs.com/package/@react-three/fiber): ^9.0.0-rc.1
+- [clsx](https://www.npmjs.com/package/clsx): ^2.1.1
+- [form-data](https://www.npmjs.com/package/form-data): ^4.0.1
+- [framer-motion](https://www.npmjs.com/package/framer-motion): ^12.0.0-alpha.2
+- [glob](https://www.npmjs.com/package/glob): ^11.0.0
+- [next](https://www.npmjs.com/package/next): 15.0.3
+- [react](https://www.npmjs.com/package/react): 19.0.0-rc-66855b96-20241106
+- [react-dom](https://www.npmjs.com/package/react-dom): 19.0.0-rc-66855b96-20241106
+- [react-hook-form](https://www.npmjs.com/package/react-hook-form): ^7.53.2
+- [react-icons](https://www.npmjs.com/package/react-icons): ^5.3.0
+- [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer): ^9.13.1
+- [react-tilt](https://www.npmjs.com/package/react-tilt): ^1.0.2
+- [react-vertical-timeline-component](https://www.npmjs.com/package/react-vertical-timeline-component): ^3.6.0
+- [sharp](https://www.npmjs.com/package/sharp): ^0.33.5
+- [sonner](https://www.npmjs.com/package/sonner): ^1.7.0
+- [tailwind-merge](https://www.npmjs.com/package/tailwind-merge): ^2.5.4
+- [three](https://www.npmjs.com/package/three): ^0.170.0
 
 ## :rocket: Follow Me
 

@@ -1,4 +1,4 @@
-import { memo, useRef } from "react";
+import { memo, useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { fadeIn } from "@/lib/motion";
@@ -26,6 +26,11 @@ export const ProjectCard = memo(
   }: ProjectCardProps) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.5 });
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+    useEffect(() => {
+      setIsTouchDevice(window.matchMedia("(hover: none)").matches);
+    }, []);
 
     return (
       <motion.div
@@ -33,8 +38,8 @@ export const ProjectCard = memo(
         variants={fadeIn("right", "spring", 0.5 * columnIndex, 0.75)}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
-        whileHover={{ scale: [null, 1.1, 1.05] }}
-        whileTap={{ scale: 0.95 }}
+        {...(!isTouchDevice && { whileHover: { scale: [null, 1.1, 1.05] } })}
+        {...(isTouchDevice && { whileTap: { scale: 0.95 } })}
         className="relative overflow-hidden rounded-lg shadow-lg border border-[#2A0E61] flex flex-col h-full"
       >
         <Image
