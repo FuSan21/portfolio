@@ -123,7 +123,7 @@ export const Contact = () => {
                   title="What's your name?"
                   disabled={loading}
                   aria-disabled={loading}
-                  className="bg-[#151030] py-4 px-6 placeholder:text-[#aaa6c3] text-white rounded-lg outline-none border-none font-medium disabled:bg-[#151030]/20 disabled:text-white/60"
+                  className="bg-[#151030] py-4 px-6 placeholder:text-[#aaa6c3] text-white rounded-lg outline-hidden border-none font-medium disabled:bg-[#151030]/20 disabled:text-white/60"
                 />
 
                 {/* Invalid Name */}
@@ -145,7 +145,7 @@ export const Contact = () => {
                   title="What's your email?"
                   disabled={loading}
                   aria-disabled={loading}
-                  className="bg-[#151030] py-4 px-6 placeholder:text-[#aaa6c3] text-white rounded-lg outline-none border-none font-medium disabled:bg-[#151030]/20 disabled:text-white/60"
+                  className="bg-[#151030] py-4 px-6 placeholder:text-[#aaa6c3] text-white rounded-lg outline-hidden border-none font-medium disabled:bg-[#151030]/20 disabled:text-white/60"
                 />
 
                 {/* Invalid Email */}
@@ -169,7 +169,7 @@ export const Contact = () => {
                   title="What do you want to say?"
                   disabled={loading}
                   aria-disabled={loading}
-                  className="bg-[#151030] py-4 px-6 placeholder:text-[#aaa6c3] text-white rounded-lg outline-none border-none font-medium disabled:bg-[#151030]/20 disabled:text-white/60 disabled:resize-none"
+                  className="bg-[#151030] py-4 px-6 placeholder:text-[#aaa6c3] text-white rounded-lg outline-hidden border-none font-medium disabled:bg-[#151030]/20 disabled:text-white/60 disabled:resize-none"
                 />
 
                 {/* Invalid Message */}
@@ -182,7 +182,7 @@ export const Contact = () => {
               <button
                 type="submit"
                 title={loading ? "Sending..." : "Send"}
-                className="bg-[#151030] py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl disabled:bg-[#151030]/20 disabled:text-white/60"
+                className="bg-[#151030] py-3 px-8 outline-hidden w-fit text-white font-bold shadow-md shadow-primary rounded-xl disabled:bg-[#151030]/20 disabled:text-white/60"
                 disabled={loading}
                 aria-disabled={loading}
               >

@@ -14,7 +14,7 @@ export function parseStringWithBold(text: string): (string | JSX.Element)[] {
       return (
         <strong
           key={index}
-          className="bg-gradient-to-r from-[#00cea8] from-[1.9%] to-[#bf61ff] to-[97.5%] text-transparent bg-clip-text"
+          className="bg-linear-to-r from-[#00cea8] from-[1.9%] to-[#bf61ff] to-[97.5%] text-transparent bg-clip-text"
         >
           {part.slice(2, -2)}
         </strong>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Tilt } from "react-tilt";
+import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -18,16 +18,15 @@ type ServiceCardProps = {
 const ServiceCard = ({ index, title, icon }: ServiceCardProps) => {
   return (
     <Tilt
-      options={{
-        max: 45,
-        scale: 1,
-        speed: 450,
-      }}
+      tiltMaxAngleX={45}
+      tiltMaxAngleY={45}
+      scale={1}
+      transitionSpeed={450}
       className="md:w-[250px] w-full"
     >
       <motion.div
         variants={fadeIn("right", "spring", 0.5 * index, 0.75)}
-        className="w-full bg-gradient-to-r from-[#00cea8] from-[1.9%] to-[#bf61ff] to-[97.5%] p-[1px] rounded-[20px] shadow-card"
+        className="w-full bg-linear-to-r from-[#00cea8] from-[1.9%] to-[#bf61ff] to-[97.5%] p-px rounded-[20px] shadow-card"
       >
         <div className="bg-[#151030] rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col select-none">
           <Image

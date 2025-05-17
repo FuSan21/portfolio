@@ -9,7 +9,7 @@ import { fadeIn, lockVariants } from "@/lib/motion";
 export const Encryption = () => {
   return (
     <section className="flex flex-row relative items-center justify-center min-h-screen w-full h-full -z-20">
-      <div className="absolute w-auto h-auto top-0 z-[5]">
+      <div className="absolute w-auto h-auto top-0 z-5">
         <motion.div
           className="text-[40px] font-medium text-center text-gray-200"
           variants={fadeIn("up", "spring", 0, 1)}
@@ -18,7 +18,7 @@ export const Encryption = () => {
           viewport={{ once: true, amount: 1 }}
         >
           Performance{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-500 to-cyan-500">
             &
           </span>{" "}
           security.
@@ -26,7 +26,7 @@ export const Encryption = () => {
       </div>
 
       <motion.div
-        className="flex flex-col items-center justify-center absolute z-[20] w-auto h-auto"
+        className="flex flex-col items-center justify-center absolute z-20 w-auto h-auto"
         variants={fadeIn("up", "spring", 0, 1)}
         initial="hidden"
         whileInView="show"
@@ -54,12 +54,12 @@ export const Encryption = () => {
           />
         </motion.div>
 
-        <div className="Welcome-box px-[15px] py-[4px] z-[20] border my-[20px] border-[#7042F88B] opacity-[0.9]">
+        <div className="Welcome-box px-[15px] py-[4px] z-20 border my-[20px] border-[#7042F88B] opacity-[0.9]">
           <h1 className="Welcome-text text-[12px]">Encryption</h1>
         </div>
       </motion.div>
 
-      <div className="absolute z-[20] bottom-[10px] px-[5px]">
+      <div className="absolute z-20 bottom-[10px] px-[5px]">
         <div
           className={`${cedarvilleCursive.className} text-[20px] font-medium text-center text-gray-300`}
         >

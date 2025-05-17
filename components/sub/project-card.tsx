@@ -51,9 +51,9 @@ export const ProjectCard = memo(
           draggable={false}
         />
 
-        <div className="relative p-4 flex flex-col flex-grow">
+        <div className="relative p-4 flex flex-col grow">
           <h1 className="text-2xl font-semibold text-white">{title}</h1>
-          <p className="mt-2 text-gray-300 flex-grow">{description}</p>
+          <p className="mt-2 text-gray-300 grow">{description}</p>
           <div className="flex justify-between items-center mt-4">
             <div className="flex flex-col space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0">
               {demo && (
@@ -88,7 +88,7 @@ export const ProjectCard = memo(
                     className="cursor-pointer select-none h-5 w-5"
                     draggable={false}
                   />
-                  <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                  <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded-sm py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
                     {item.name}
                   </span>
                 </div>
