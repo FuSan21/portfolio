@@ -309,6 +309,51 @@ export const OTHER_SKILL = [
 
 export const PROJECTS = [
   {
+    title: "Beyond The Fall",
+    description:
+      "An interactive storytelling website for a nature-inspired book or experience, featuring an immersive UI with 3D elements. The site uses Wordpress as admin panel and REST api as backend. It offers a book showcase, timeline of events, journey selection interface, community engagement section, and integrated e-commerce functionality to purchase related merchandise.",
+    image: "/projects/beyond-the-fall.png",
+    demo: "https://beyond-the-fall.fusan.me",
+    tech: [
+      {
+        name: "Next.js",
+        icon: "next.png",
+      },
+      {
+        name: "React",
+        icon: "react.png",
+      },
+      {
+        name: "TypeScript",
+        icon: "ts.png",
+      },
+      {
+        name: "Tailwind CSS",
+        icon: "tailwind.png",
+      },
+      {
+        name: "Framer Motion",
+        icon: "framer.png",
+      },
+      {
+        name: "Three.js",
+        icon: "three.svg",
+      },
+      {
+        name: "WordPress API",
+        icon: "wordpress.png",
+      },
+      {
+        name: "HTML",
+        icon: "html.png",
+      },
+      {
+        name: "CSS",
+        icon: "css.png",
+      },
+    ],
+  },
+  {
     title: "Clinique Accounts Management Web App",
     description:
       "A comprehensive web application designed to streamline and automate the financial and operational processes of a Nursing Home.",
@@ -347,7 +392,7 @@ export const PROJECTS = [
     description:
       "This project is a multiplayer quiz app. Quiz host can create quizzes and players can join the quiz using a link. It handles players in realtime and show answer accuracy and final score after question timer and quiz completion respectively.",
     image: "/projects/kahoot-portal.webp",
-    demo: "https://demo2.fusan.live",
+    demo: "https://demo2.fusan.me",
     source: "https://github.com/FuSan21/kahoot-portal",
     tech: [
       {
@@ -397,7 +442,7 @@ export const PROJECTS = [
     description:
       "A complete Store Website where admin can manage products, orders, and users. Users can buy products and track their orders. Has filtering, searching, and sorting.",
     image: "/projects/vehicleparts.webp",
-    demo: "https://demo1.fusan.live",
+    demo: "https://demo1.fusan.me",
     source: "https://github.com/FuSan21/store-Management-Website",
     tech: [
       {
@@ -431,11 +476,32 @@ export const PROJECTS = [
     ],
   },
   {
+    title: "Jira Standup Stats Generator",
+    description:
+      "Userscript that helps teams conduct more efficient Jira standup meetings by providing an organized view of tickets by assignee. Also include script to communicate with thirdparty website to update the data remotely from jira.",
+    image: "/projects/jira-standup-stats-generator.png",
+    demo: "https://github.com/FuSan21/jira-standup-stats-generator",
+    source: "https://github.com/FuSan21/jira-standup-stats-generator",
+    tech: [
+      {
+        name: "Userscript",
+        icon: "userscript.png",
+      },
+      {
+        name: "JavaScript",
+        icon: "js.png",
+      },
+      { name: "HTML", icon: "html.png" },
+      { name: "CSS", icon: "css.png" },
+      { name: "Jira API", icon: "jira.png" },
+    ],
+  },
+  {
     title: "3d Space Portfolio",
     description:
       "This project is an enhanced version of the sanidhyy/space-portfolio, incorporating advanced features and improved responsiveness for smaller screens. It utilizes Three.js for sophisticated 3D rendering and Framer Motion for dynamic animations.",
     image: "/projects/portfolio.webp",
-    demo: "https://www.fusan.live",
+    demo: "https://www.fusan.me",
     source: "https://github.com/FuSan21/portfolio",
     tech: [
       {

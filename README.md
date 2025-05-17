@@ -11,7 +11,7 @@
 [![Github commits](https://flat.badgen.net/github/commits/FuSan21/portfolio?icon=github&color=black&scale=1.01)](https://github.com/FuSan21/portfolio/commits "Github commits")
 [![GitHub issues](https://flat.badgen.net/github/issues/FuSan21/portfolio?icon=github&color=black&scale=1.01)](https://github.com/FuSan21/portfolio/issues "GitHub issues")
 [![GitHub pull requests](https://flat.badgen.net/github/prs/FuSan21/portfolio?icon=github&color=black&scale=1.01)](https://github.com/FuSan21/portfolio/pulls "GitHub pull requests")
-[![Vercel](https://vercelbadge.vercel.app/api/FuSan21/portfolio?style=flat-square)](https://www.fusan.live)
+[![Vercel](https://vercelbadge.vercel.app/api/FuSan21/portfolio?style=flat-square)](https://www.fusan.me)
 
 <!-- Table of Contents -->
 <details>
