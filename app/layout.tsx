@@ -20,7 +20,7 @@ export const metadata: Metadata = siteConfig;
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body
         className={cn(
           "bg-[#030014] overflow-y-scroll overflow-x-hidden",

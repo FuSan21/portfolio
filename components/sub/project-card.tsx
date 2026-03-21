@@ -1,4 +1,4 @@
-import { memo, useRef, useState, useEffect } from "react";
+import { memo, useRef, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { fadeIn } from "@/lib/motion";
@@ -26,11 +26,15 @@ export const ProjectCard = memo(
   }: ProjectCardProps) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.5 });
-    const [isTouchDevice, setIsTouchDevice] = useState(false);
-
-    useEffect(() => {
-      setIsTouchDevice(window.matchMedia("(hover: none)").matches);
-    }, []);
+    const isTouchDevice = useSyncExternalStore(
+      (onStoreChange) => {
+        const mq = window.matchMedia("(hover: none)");
+        mq.addEventListener("change", onStoreChange);
+        return () => mq.removeEventListener("change", onStoreChange);
+      },
+      () => window.matchMedia("(hover: none)").matches,
+      () => false
+    );
 
     return (
       <motion.div
