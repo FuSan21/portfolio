@@ -16,7 +16,7 @@ No test framework — `bun run build` plus `bun run lint` are the full verificat
 
 Gotchas that will cost you time if you change them:
 
-- Scripts use `bun run --bun next ...`. The `--bun` is what puts Next on the Bun runtime; a plain `bun run` follows the `next` binary's node shebang. `vercel.json` pins `bunVersion` to match.
+- **Bun is the package manager only. Do not add `--bun` to the scripts.** Running Next on the Bun runtime builds fine locally but *fails on Vercel*: `Failed to load external module next/dist/compiled/next-server/app-page-turbo.runtime.prod.js: TypeError: Expected CommonJS module to have a function wrapper`, then `Failed to collect page data for /_not-found`. This was tried and reverted. Matching reports ([#86866](https://github.com/vercel/next.js/issues/86866), [#87417](https://github.com/vercel/next.js/issues/87417)) appear closed, but both were auto-closed by a bot for missing reproductions — not fixed. Plain `bun run` follows the `next` binary's node shebang, which is what we want.
 - `trustedDependencies` in `package.json` must keep both `@tailwindcss/oxide` and `sharp`. Bun blocks lifecycle scripts by default, and declaring the field *replaces* its built-in trusted list instead of extending it — dropping either silently breaks Tailwind's native binary or image optimization.
 - ESLint is pinned to 9.x. `eslint-config-next` claims `eslint: >=9.0.0`, but its transitive `eslint-plugin-react` caps at `^9.7` and crashes under 10.
 
