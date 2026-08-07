@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 import { cedarvilleCursive } from "@/app/fonts";
+import { LazyBackgroundVideo } from "@/components/sub/lazy-background-video";
 import { fadeIn, lockVariants } from "@/lib/motion";
 
 export const Encryption = () => {
@@ -68,16 +69,10 @@ export const Encryption = () => {
       </div>
 
       <div className="w-full flex items-start justify-center absolute">
-        <video
-          loop
-          muted
-          autoPlay
-          playsInline
-          preload="false"
+        <LazyBackgroundVideo
+          src="/videos/encryption-bg.webm"
           className="w-full h-full md:h-auto object-cover md:object-fill min-w-full min-h-screen"
-        >
-          <source src="/videos/encryption-bg.webm" type="video/webm" />
-        </video>
+        />
       </div>
     </section>
   );

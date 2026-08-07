@@ -17,7 +17,7 @@ export const SERVICES = [
     icon: "frontend.png",
   },
   {
-    title: "Android Developer Kotlin",
+    title: "Android Developer",
     icon: "mobile.png",
   },
 ] as const;

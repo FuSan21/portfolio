@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+
 import { Html, useProgress } from "@react-three/drei";
 
 // Loader while canvas (model) is loading

@@ -2,11 +2,19 @@
 
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { useState, useRef, type FormEvent, type ChangeEvent } from "react";
 import { toast } from "sonner";
 
-import { EarthCanvas } from "@/components/sub/earth";
 import { slideIn, staggerContainer } from "@/lib/motion";
+
+// three.js + r3f is the heaviest thing on the page and this canvas sits below
+// the fold, so keep it out of the initial bundle. WebGL cannot render on the
+// server anyway, hence ssr: false.
+const EarthCanvas = dynamic(
+  () => import("@/components/sub/earth").then((mod) => mod.EarthCanvas),
+  { ssr: false }
+);
 // Contact
 export const Contact = () => {
   const formRef = useRef<HTMLFormElement | null>(null);

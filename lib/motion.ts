@@ -1,9 +1,14 @@
+import type { Variants } from "framer-motion";
+
+export type MotionDirection = "left" | "right" | "up" | "down";
+export type MotionTransitionType = "spring" | "tween" | "inertia" | "keyframes";
+
 export const fadeIn = (
-  direction: "left" | "right" | "up" | "down" | string,
-  type: string,
+  direction: MotionDirection,
+  type: MotionTransitionType,
   delay: number,
   duration: number
-) => {
+): Variants => {
   return {
     hidden: {
       x: direction === "left" ? 100 : direction === "right" ? -100 : 0,
@@ -25,11 +30,11 @@ export const fadeIn = (
 };
 
 export const slideIn = (
-  direction: "left" | "right" | "up" | "down" | string,
-  type: string,
+  direction: MotionDirection,
+  type: MotionTransitionType,
   delay: number,
   duration: number
-) => {
+): Variants => {
   return {
     hidden: {
       x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
@@ -51,7 +56,7 @@ export const slideIn = (
 export const staggerContainer = (
   staggerChildren?: number,
   delayChildren?: number
-) => {
+): Variants => {
   return {
     hidden: {},
     show: {
@@ -63,7 +68,7 @@ export const staggerContainer = (
   };
 };
 
-export const skillContainerVariant = () => {
+export const skillContainerVariant = (): Variants => {
   return {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -78,13 +83,13 @@ export const skillContainerVariant = () => {
   };
 };
 
-export const skillIconVariant = () => {
+export const skillIconVariant = (): Variants => {
   return {
-    hover: { y: -5, transition: { yoyo: Infinity, duration: 0.5 } },
+    hover: { y: -5, transition: { duration: 0.5 } },
   };
 };
 
-export const lockVariants = () => {
+export const lockVariants = (): Variants => {
   return {
     hidden: { y: 0 },
     visible: {

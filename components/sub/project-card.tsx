@@ -1,11 +1,13 @@
-import { memo, useRef, useSyncExternalStore } from "react";
+"use client";
+
+import { memo, useRef } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { fadeIn } from "@/lib/motion";
+import { useMediaQuery } from "@/lib/use-media-query";
 
 type ProjectCardProps = {
   columnIndex: number;
-  columnsInRow: number;
   src: string;
   title: string;
   description: string;
@@ -26,15 +28,7 @@ export const ProjectCard = memo(
   }: ProjectCardProps) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.5 });
-    const isTouchDevice = useSyncExternalStore(
-      (onStoreChange) => {
-        const mq = window.matchMedia("(hover: none)");
-        mq.addEventListener("change", onStoreChange);
-        return () => mq.removeEventListener("change", onStoreChange);
-      },
-      () => window.matchMedia("(hover: none)").matches,
-      () => false
-    );
+    const isTouchDevice = useMediaQuery("(hover: none)", false);
 
     return (
       <motion.div

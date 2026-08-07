@@ -1,7 +1,14 @@
 import Image from "next/image";
+import { cacheLife } from "next/cache";
 import { USED_TECH } from "@/constants";
 
-export const Footer = () => {
+export const Footer = async () => {
+  "use cache";
+  // The copyright year is the one non-deterministic value in the server tree.
+  // Caching it satisfies Cache Components' prerender check, and a daily
+  // lifetime lets the year roll over instead of sticking for a whole month.
+  cacheLife("days");
+
   return (
     <div className="w-full h-full bg-transparent text-gray-200 shadow-lg md:p-[15px]">
       <div className="w-full flex flex-col items-center justify-center m-auto">
