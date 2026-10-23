@@ -377,6 +377,88 @@ export const PROJECTS = [
     ],
   },
   {
+    title: "Unqlock",
+    description:
+      "A Manifest V3 browser extension for the Unqork builder, published on the Chrome Web Store and Firefox Add-ons. It color-codes 54 component types, compacts and arranges canvas rows, controls builder panel visibility and width, labels environments, adds debug tools for application pages, and can detach the SSE Debugger into its own window.",
+    image: "/projects/unqlock.webp",
+    demo: "https://chromewebstore.google.com/detail/unqlock/mcjjmjlohiadneoaielnigjjlbibfcja",
+    source: "https://github.com/FuSan21/Unqlock",
+    tech: [
+      {
+        name: "TypeScript",
+        icon: "ts.png",
+      },
+      {
+        name: "Chrome Extension",
+        icon: "chrome.svg",
+      },
+      {
+        name: "Firefox Add-on",
+        icon: "firefox.svg",
+      },
+      {
+        name: "HTML",
+        icon: "html.png",
+      },
+      {
+        name: "CSS",
+        icon: "css.png",
+      },
+    ],
+  },
+  {
+    title: "Macro Deck Meeting Controls",
+    description:
+      "Macro Deck plugins that control Microsoft Teams, Zoom and Google Meet with live state on the buttons, without ever focusing the meeting window. Teams and Zoom are driven through Windows UI Automation after Microsoft retired the Teams local API, and Google Meet through a companion Chrome extension over a local WebSocket. The Teams plugin is published in the official Macro Deck Extension Store.",
+    image: "/projects/macro-deck-meeting-controls.webp",
+    demo: "",
+    source: "https://github.com/FuSan21?tab=repositories&q=Macro-Deck",
+    tech: [
+      {
+        name: "C#",
+        icon: "csharp.svg",
+      },
+      {
+        name: ".NET",
+        icon: "dotnet.svg",
+      },
+      {
+        name: "Windows UI Automation",
+        icon: "windows.svg",
+      },
+      {
+        name: "Chrome Extension",
+        icon: "chrome.svg",
+      },
+      {
+        name: "JavaScript",
+        icon: "js.png",
+      },
+    ],
+  },
+  {
+    title: "Headless Block Styles",
+    description:
+      "A WordPress plugin that brings full Gutenberg block styling to headless frontends like Next.js over the REST API, with no WPGraphQL required. It serves the global stylesheet with all preset variables and classes, and computes per-block inline styles on the server with the WordPress Style Engine so the frontend receives ready-to-spread React style objects.",
+    image: "/projects/headless-block-styles.webp",
+    demo: "",
+    source: "https://github.com/FuSan21/headless-block-styles",
+    tech: [
+      {
+        name: "PHP",
+        icon: "php.png",
+      },
+      {
+        name: "WordPress",
+        icon: "wordpress.png",
+      },
+      {
+        name: "Next.js",
+        icon: "next.png",
+      },
+    ],
+  },
+  {
     title: "Clinique Accounts Management Web App",
     description:
       "A comprehensive web application designed to streamline and automate the financial and operational processes of a Nursing Home.",
