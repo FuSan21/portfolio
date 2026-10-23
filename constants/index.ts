@@ -439,9 +439,9 @@ export const PROJECTS = [
   {
     title: "Headless Block Styles",
     description:
-      "A WordPress plugin that brings full Gutenberg block styling to headless frontends like Next.js over the REST API, with no WPGraphQL required. It serves the global stylesheet with all preset variables and classes, and computes per-block inline styles on the server with the WordPress Style Engine so the frontend receives ready-to-spread React style objects.",
+      "A WordPress plugin, published in the official WordPress.org plugin directory, that brings full Gutenberg block styling to headless frontends like Next.js over the REST API, with no WPGraphQL required. It serves the global stylesheet with all preset variables and classes, and computes per-block inline styles on the server with the WordPress Style Engine so the frontend receives ready-to-spread React style objects.",
     image: "/projects/headless-block-styles.webp",
-    demo: "",
+    demo: "https://wordpress.org/plugins/headless-block-styles/",
     source: "https://github.com/FuSan21/headless-block-styles",
     tech: [
       {
