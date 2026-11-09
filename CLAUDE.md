@@ -23,30 +23,29 @@ Gotchas that will cost you time if you change them:
 
 ## Architecture
 
-Single-page Next.js App Router site (Next 16.3, React 19, Tailwind v4, TypeScript strict) with Cache Components and React Compiler enabled. One route: `app/page.tsx` stacks all sections in order (Hero → Skills → Encryption → Experience → Projects → Contact). `app/layout.tsx` wraps them with the persistent `StarsCanvas`, `Navbar`, and `Footer`. Config lives in `next.config.ts`.
+Single-page Next.js App Router site (Next 16.3, React 19, Tailwind v4, TypeScript strict) with Cache Components and React Compiler enabled. One route: `app/page.tsx` stacks all sections in order (Hero → Experience → Projects → Skills → Contact). `app/layout.tsx` wraps them with `Navbar`, `Footer`, and `MotionProvider` (framer-motion `MotionConfig reducedMotion="user"`). Config lives in `next.config.ts`.
 
-**Content lives in `constants/index.ts`, not in components.** That ~700-line file is the single source of truth for every section's data (`SERVICES`, `EXPERIENCES`, the skill groups, `PROJECTS`, `NAV_LINKS`, `SOCIALS`, `PROFESSIONAL_PROFILES`, `USED_TECH`). Adding a project or job is a data edit there, not a component change. Most exports end in `as const` and component prop types derive from them (e.g. `experience.tsx` types its card as `(typeof EXPERIENCES)[keyof typeof EXPERIENCES][number]`), so widening a literal type can ripple into components.
+**Design direction ("The Normalizer"):** messy paper goes through a pair of rollers and comes out as clean records. The hero is a pinned 320vh section whose scroll progress drives both the 3D scene and the headline. Each headline word steps through the Redaction grades (100 → clean) while its sheet is between the rollers. `lib/normalizer-timeline.ts` is the single timeline both sides read, so retime there, not in the components.
+
+**Content lives in `constants/index.ts`, not in components.** That ~770-line file is the single source of truth for every section's data (`EXPERIENCES`, the skill groups, `PROJECTS`, `NAV_LINKS`, `SOCIALS`, `PROFESSIONAL_PROFILES`, `USED_TECH`). Adding a project or job is a data edit there, not a component change. The first three `PROJECTS` are also the sheets printed in the hero scene. The skills section derives "used with" pairs from `PROJECTS[].tech` names, so keep those names identical to `skill_name`. Most exports end in `as const` and component prop types derive from them (e.g. `experience.tsx` types its row as `(typeof EXPERIENCES)[keyof typeof EXPERIENCES][number]`), so widening a literal type can ripple into components.
 
 **Icon paths are conventions, not full paths.** Constants store bare filenames; the consuming component prefixes the public directory:
 
-- skills / project tech icons → `/skills/${icon}` (`skill-data-provider.tsx`, `project-card.tsx`)
-- service icons → `/services/${icon}` (`hero.tsx`)
-- experience logos → `/experiences/${icon}` (`experience.tsx`)
+- skills / project tech icons → `/skills/${icon}` (`skills.tsx`, `project-card.tsx`)
 - `PROJECTS[].image` is the exception — a full path like `/projects/foo.png`
+- `EXPERIENCES[].icon` / `iconBg` (`/experiences/`) are currently unused by the ledger layout
 
 Add the asset to the matching `public/` subfolder when adding a constant entry.
 
-**Component split:** `components/main/` holds full page sections (each rendered once from `page.tsx` or `layout.tsx`); `components/sub/` holds the pieces they compose. Import via the `@/*` alias. Sections are server components by default; anything using framer-motion, r3f, hooks, or browser APIs needs `"use client"`.
+**Component split:** `components/main/` holds full page sections (each rendered once from `page.tsx` or `layout.tsx`); `components/sub/` holds the pieces they compose. Import via the `@/*` alias. Sections are server components by default; anything using framer-motion, r3f, hooks, or browser APIs needs `"use client"`. `experience.tsx` stays a server component by using native `<details>` for expand/collapse.
 
-**Animation:** use the variant factories in `lib/motion.ts` (`fadeIn`, `slideIn`, `staggerContainer`, plus the skill/lock variants) rather than inline variants — parents pass `staggerContainer()`, children `fadeIn(...)`. A variant only animates if the element also sets `initial` plus `animate`/`whileInView`, or has a motion parent orchestrating it.
+**Animation:** use the variant factories in `lib/motion.ts` (`rise`) rather than inline variants. A variant only animates if the element also sets `initial` plus `animate`/`whileInView`. Keep motion sparse: the hero pass is the one big effect.
 
-**Rich text:** `parseStringWithBold` in `lib/utils.tsx` turns `**bold**` inside constant strings into a gradient `<strong>` — that's why `EXPERIENCES[].points` contain asterisks. `lib/utils.tsx` is `.tsx` because it returns JSX; `cn()` lives there too.
+**Rich text:** `parseStringWithBold` in `lib/utils.tsx` turns `**bold**` inside constant strings into a semibold `<strong>` — that's why `EXPERIENCES[].points` contain asterisks. `lib/utils.tsx` is `.tsx` because it returns JSX; `cn()` lives there too.
 
 ### Keep heavy assets lazy
 
-`three` / `@react-three/fiber` / `drei` load via `next/dynamic` with `ssr: false`, which is the difference between ~790KB and ~1760KB of initial JS. `ssr: false` is illegal in a server component, which is why `components/main/star-background.tsx` exists as a thin client wrapper around `components/sub/star-scene.tsx`; `contact-us.tsx` wraps `components/sub/earth.tsx` the same way. Don't pull them into a static import graph.
-
-For background video use `components/sub/lazy-background-video.tsx`, not a raw `<video>`. `preload="none"` does **not** defer an autoplaying video — `autoplay` wins and the browser fetches it regardless. The component withholds `src` until the element nears the viewport.
+`three` / `@react-three/fiber` load via `next/dynamic` with `ssr: false` from `components/main/hero.tsx`; the scene itself is `components/sub/normalizer-scene.tsx`. Don't pull them into a static import graph. The canvas uses `frameloop="demand"` and only re-renders when scroll progress changes, and it unmounts once the hero is scrolled well past. All scene textures are drawn at runtime on 2D canvases (`normalizer-textures.ts`), so the scene ships no image or model assets. Fragment text there is invented sample data, never real client records.
 
 ## Cache Components
 
@@ -60,11 +59,13 @@ The footer sits in the layout, so its `days` lifetime caps the whole route — `
 
 `components/main/contact-us.tsx` sends via EmailJS entirely client-side (no API route). It reads four `NEXT_PUBLIC_` vars from `.env.local`: `NEXT_PUBLIC_SERVICE_ID`, `NEXT_PUBLIC_TEMPLATE_ID`, `NEXT_PUBLIC_EMAILJS_KEY`, `NEXT_PUBLIC_EMAILJS_RECIEVER` (the misspelling is the real name). Validation is DOM-based: it toggles `.hidden` on `#name-error` / `#email-error` / `#message-error`, so those IDs must match the field names.
 
-The form has no `noValidate` and the email field is `type="email"`, so a malformed email is caught by native browser validation before React's handler runs — the custom "Invalid E-mail!" span only appears when the field is empty. Long-standing behavior, not a bug.
+The form has no `noValidate` and the email field is `type="email"`, so a malformed email is caught by native browser validation before React's handler runs — the custom email error span only appears when the field is empty. Long-standing behavior, not a bug. On success the form clears and shows a "Received" stamp; on failure it keeps the visitor's text and shows an error toast.
 
 ## Styling
 
-Tailwind v4 via `@tailwindcss/postcss` — there is no `tailwind.config.ts`. Theme customization goes in the `@theme` block in `app/globals.css`, alongside the hand-written classes components rely on (`button-primary`, `Welcome-box`, `Welcome-text`, `cursive`, `scrollbar-hidden`). The site is dark-only; `#030014` is set on `<body>` and as the viewport `themeColor`. Section colors are inline hex literals (`#151030`, `#1d1836`, `#2A0E61`) rather than theme tokens — match neighboring values when adding UI.
+Tailwind v4 via `@tailwindcss/postcss` — there is no `tailwind.config.ts`. Tokens live in the `@theme` blocks in `app/globals.css`: colors `carbon` (#0F1226, page background and `themeColor`), `ledger` (#1A1E3A, surfaces), `copy` (#7D8CFF, links/focus), `form` (#E6E2D6, text and paper), `greenbar` (#B9D8B0, 3D paper only), `stamp` (#E0473A, reserved for the "Normalized"/"Received" stamps and the send button). Fonts: `font-display` (Redaction), `font-body` (Atkinson Hyperlegible Next), `font-mono` (Martian Mono), plus the `mono-label` utility for condensed uppercase captions. The site is dark-only.
+
+Redaction is self-hosted from `app/fonts/redaction/` (SIL OFL 1.1, licence file alongside). `app/fonts.ts` registers each degradation grade as its own family and CSS variable; only the clean cut and grade 100 are preloaded, and the hero renders a hidden sample of the middle grades so they're fetched before the first scroll.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

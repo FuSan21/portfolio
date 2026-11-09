@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 
 export const siteConfig: Metadata = {
   title: "Fuad Hasan | Portfolio",
-  description: "Welcome to my full stack Next.js 14 space portfolio.",
+  description:
+    "Fuad Hasan, application engineer and team lead. Rules engines, integrations and internal tools.",
   keywords: [
     "reactjs",
     "nextjs",
     "vercel",
     "react",
-    "space-portfolio",
     "portfolio",
     "react-icons",
     "cn",
@@ -19,13 +19,10 @@ export const siteConfig: Metadata = {
     "framer-motion",
     "motion",
     "animation",
-    "heroicons",
-    "next-themes",
     "postcss",
     "prettier",
     "react-dom",
     "tailwindcss",
-    "tailwindcss-animate",
     "ui/ux",
     "js",
     "javascript",

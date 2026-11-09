@@ -1,56 +1,44 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { NAV_LINKS, SOCIALS } from "@/constants";
 
 export const Navbar = () => {
   return (
-    <div className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#03001427] backdrop-blur-md z-50 px-0 md:px-10">
-      <div className="w-full h-full flex flex-wrap md:flex-nowrap items-center justify-between m-auto px-[10px] order-1">
-        <Link
-          href="#about-me"
-          className="h-auto w-auto flex flex-row items-center"
-        >
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            width={70}
-            height={70}
-            draggable={false}
-            className="cursor-pointer hover:animate-spin w-[70px] h-[70px]"
-            priority
-          />
-          <div className="font-bold ml-[10px] text-gray-300">Fuad Hasan</div>
+    <header className="fixed inset-x-0 top-0 z-50 border-b bg-carbon/80 backdrop-blur-md">
+      <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-6 px-6 md:px-10">
+        <Link href="#about-me" className="font-display text-xl text-form">
+          Fuad Hasan
         </Link>
 
-        <div className="w-full md:w-[500px] h-full flex flex-row items-center justify-between order-3 basis-full md:order-2 md:basis-auto">
-          <div className="flex items-center justify-between w-full h-auto border-[rgba(112,66,248,0.38)] bg-[rgba(3,0,20,0.37)] mr-[15px] px-[20px] py-[10px] rounded-full text-gray-200 text-sm md:text-base">
-            {NAV_LINKS.map((link) => (
+        <ul className="hidden items-center gap-7 md:flex">
+          {NAV_LINKS.map((link) => (
+            <li key={link.title}>
               <Link
-                key={link.title}
                 href={link.link}
-                className="cursor-pointer hover:text-[rgb(112,66,248)] transition"
+                className="mono-label text-form/65 transition-colors hover:text-form"
               >
                 {link.title}
               </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex flex-row gap-5 order-2 md:order-3">
-          {SOCIALS.map(({ link, name, icon: Icon }) => (
-            <Link
-              href={link}
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label={`${name} Link`}
-              key={name}
-            >
-              <Icon className="h-6 w-6 text-white" />
-            </Link>
+            </li>
           ))}
-        </div>
-      </div>
-    </div>
+        </ul>
+
+        <ul className="flex items-center gap-4">
+          {SOCIALS.map(({ link, name, icon: Icon }) => (
+            <li key={name}>
+              <Link
+                href={link}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label={name}
+                className="text-form/65 transition-colors hover:text-form"
+              >
+                <Icon className="h-5 w-5" />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
   );
 };

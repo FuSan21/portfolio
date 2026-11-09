@@ -9,8 +9,8 @@ const nextConfig: NextConfig = {
 
   experimental: {
     // Large barrel exports that Next does not optimize by default.
-    // react-icons and @heroicons/react are already on the built-in list.
-    optimizePackageImports: ["@react-three/drei", "framer-motion"],
+    // react-icons is already on the built-in list.
+    optimizePackageImports: ["framer-motion"],
 
     // Runs React Compiler natively inside Turbopack instead of round-tripping
     // through Babel.

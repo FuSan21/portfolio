@@ -1,155 +1,71 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Image from "next/image";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-
-import { parseStringWithBold } from "@/lib/utils";
 import { EXPERIENCES } from "@/constants";
-import { fadeIn } from "@/lib/motion";
+import { parseStringWithBold } from "@/lib/utils";
+import { SectionHeading } from "@/components/sub/section-heading";
 
-import "react-vertical-timeline-component/style.min.css";
-import { useInView } from "react-intersection-observer";
+type LedgerRecord = (typeof EXPERIENCES)[keyof typeof EXPERIENCES][number];
 
-type ExperienceCardProps = {
-  experience: (typeof EXPERIENCES)[keyof typeof EXPERIENCES][number];
-  type: keyof typeof EXPERIENCES;
-  position?: "left" | "right";
-};
-
-// Experience Card
-const ExperienceCard = ({
-  experience,
-  type,
-  position,
-}: ExperienceCardProps) => {
-  const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
-
-  return (
-    <VerticalTimelineElement
-      contentStyle={{ background: "#1d1836", color: "#fff" }}
-      contentArrowStyle={{ borderRight: "7px solid #232631" }}
-      date={experience.date}
-      iconStyle={{ background: experience.iconBg }}
-      visible={inView}
-      position={position}
-      icon={
-        <div className="flex justify-center items-center w-full h-full">
-          <Image
-            src={`/experiences/${experience.icon}`}
-            width={80}
-            height={80}
-            alt={experience.name}
-            className="w-[60%] h-[60%] object-contain"
-            draggable={false}
-          />
-        </div>
-      }
-    >
-      {/* Title */}
-      <div ref={ref}>
-        <h3 className="text-white text-[24px] font-bold">{experience.title}</h3>
-        <p
-          className="text-secondary text-[16px] font-semibold"
-          style={{ margin: 0 }}
-        >
-          {experience.name}
-        </p>
-
-        {/* Experience Points */}
-        {type === "job" && (
-          <ul className="mt-5 list-disc ml-5 space-y-2">
-            {experience.points.map((point, i) => (
-              <li
-                key={`job-experience-point-${i}`}
-                className="text-white-100 text-[14px] pl-1 tracking-wider"
-              >
-                {parseStringWithBold(point)}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {/* cgpa */}
-        {type === "education" && (
-          <ul className="mt-5 list-disc ml-5 space-y-2">
-            {experience.points.map((point, i) => (
-              <li
-                key={`education-experience-point-${i}`}
-                className="text-white-100 text-[14px] pl-1 tracking-wider"
-              >
-                {parseStringWithBold(point)}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </VerticalTimelineElement>
-  );
-};
-
-// Experience
-export const Experience = () => {
-  return (
-    <section
-      className={"sm:px-16 px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0"}
-    >
-      <span className="hash-span" id="experiences">
-        &nbsp;
+// One fixed-width ledger row per role; <details> handles open/close natively,
+// so this stays a server component.
+const LedgerRow = ({
+  record,
+  open,
+}: {
+  record: LedgerRecord;
+  open?: boolean;
+}) => (
+  <details open={open} className="group border-t last:border-b">
+    <summary className="grid cursor-pointer grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 px-2 py-5 transition-colors hover:bg-ledger md:grid-cols-[11rem_1fr_minmax(0,18rem)_auto]">
+      <span className="mono-label text-form/55 md:col-start-1 md:row-start-1">
+        {record.date}
       </span>
-      {/* Title */}
-      <motion.div
-        variants={fadeIn("down", "spring", 0.5, 1)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 1 }}
+      <span className="col-start-1 font-display text-2xl text-form md:col-start-2 md:row-start-1 md:text-3xl">
+        {record.title}
+      </span>
+      <span className="mono-label col-start-1 text-form/70 md:col-start-3 md:row-start-1">
+        {record.name}
+      </span>
+      <span
+        aria-hidden
+        className="mono-label col-start-2 row-start-1 text-copy md:col-start-4"
       >
-        <p
-          className={
-            "sm:text-[18px] text-[14px] text-gray-400 font-black uppercase tracking-wider"
-          }
-        >
-          What I have done so far
-        </p>
-        <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
-          Work Experience.
-        </h2>
-      </motion.div>
+        <span className="group-open:hidden">[+]</span>
+        <span className="hidden group-open:inline">[−]</span>
+      </span>
+    </summary>
+    <ul className="space-y-3 px-2 pb-8 md:ml-[calc(11rem+1.5rem)] md:max-w-3xl">
+      {record.points.map((point, i) => (
+        <li key={i} className="text-form/80 leading-relaxed">
+          {parseStringWithBold(point)}
+        </li>
+      ))}
+    </ul>
+  </details>
+);
 
-      <div className="flex flex-col">
-        <VerticalTimeline>
-          {EXPERIENCES.job.map((experience, i) => (
-            <ExperienceCard key={i} experience={experience} type="job" />
-          ))}
-        </VerticalTimeline>
-      </div>
+export const Experience = () => (
+  <section
+    id="experiences"
+    className="mx-auto max-w-6xl scroll-mt-20 px-6 py-28 md:px-10"
+  >
+    <SectionHeading
+      title="Experience"
+      detail={`${EXPERIENCES.job.length} roles · ${EXPERIENCES.education.length} degree`}
+    />
+    <div className="mt-12">
+      {EXPERIENCES.job.map((record, i) => (
+        <LedgerRow
+          key={`${record.name}-${record.title}`}
+          record={record}
+          open={i === 0}
+        />
+      ))}
+    </div>
 
-      <motion.div
-        variants={fadeIn("down", "spring", 0.5, 0.5)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 1 }}
-      >
-        <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
-          Education Experience.
-        </h2>
-      </motion.div>
-
-      <div className="flex flex-col">
-        <VerticalTimeline>
-          {EXPERIENCES.education.map((experience, i) => (
-            <ExperienceCard
-              key={i}
-              experience={experience}
-              type="education"
-              position={EXPERIENCES.job.length % 2 === 0 ? "left" : "right"}
-            />
-          ))}
-        </VerticalTimeline>
-      </div>
-    </section>
-  );
-};
+    <h3 className="mono-label mt-16 text-form/60">Education</h3>
+    <div className="mt-4">
+      {EXPERIENCES.education.map((record) => (
+        <LedgerRow key={record.title} record={record} />
+      ))}
+    </div>
+  </section>
+);

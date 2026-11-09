@@ -3,25 +3,6 @@ import { RxDiscordLogo, RxGithubLogo, RxLinkedinLogo } from "react-icons/rx";
 import { BsTwitterX } from "react-icons/bs";
 import { TbFileCv } from "react-icons/tb";
 
-export const SERVICES = [
-  {
-    title: "Web Developer",
-    icon: "web.png",
-  },
-  {
-    title: "Backend Developer",
-    icon: "backend.png",
-  },
-  {
-    title: "Frontend Developer",
-    icon: "frontend.png",
-  },
-  {
-    title: "Android Developer",
-    icon: "mobile.png",
-  },
-] as const;
-
 export const EXPERIENCES = {
   education: [
     {
@@ -712,16 +693,16 @@ export const NAV_LINKS = [
     link: "#about-me",
   },
   {
-    title: "Skills",
-    link: "#skills",
-  },
-  {
-    title: "Experiences",
+    title: "Experience",
     link: "#experiences",
   },
   {
     title: "Projects",
     link: "#projects",
+  },
+  {
+    title: "Skills",
+    link: "#skills",
   },
   {
     title: "Contact",

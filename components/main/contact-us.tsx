@@ -1,35 +1,33 @@
 "use client";
 
 import emailjs from "@emailjs/browser";
-import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
-import { useState, useRef, type FormEvent, type ChangeEvent } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { toast } from "sonner";
 
-import { slideIn, staggerContainer } from "@/lib/motion";
+import { SectionHeading } from "@/components/sub/section-heading";
 
-// three.js + r3f is the heaviest thing on the page and this canvas sits below
-// the fold, so keep it out of the initial bundle. WebGL cannot render on the
-// server anyway, hence ssr: false.
-const EarthCanvas = dynamic(
-  () => import("@/components/sub/earth").then((mod) => mod.EarthCanvas),
-  { ssr: false }
-);
+const EMAIL = "fuad.antor@gmail.com";
+
+const inputClass =
+  "w-full border-0 border-b-2 border-carbon/30 bg-transparent px-0 py-3 text-lg text-carbon placeholder:text-carbon/40 focus:border-copy focus:outline-none disabled:opacity-50";
+
 // Contact
 export const Contact = () => {
-  const formRef = useRef<HTMLFormElement | null>(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
     message: "",
   });
   const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
 
   // handle form change
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
+    setSent(false);
     setForm((prevForm) => ({ ...prevForm, [name]: value }));
   };
 
@@ -75,140 +73,153 @@ export const Contact = () => {
         },
         process.env.NEXT_PUBLIC_EMAILJS_KEY
       );
-      toast.success("Thanks for contacting me.");
+      // Only clear the form once it has actually been sent, so a failed
+      // send doesn't throw away what the visitor wrote.
+      setForm({ name: "", email: "", message: "" });
+      setSent(true);
     } catch (error) {
       console.error("[CONTACT_ERROR]: ", error);
-      toast.error("Something went wrong.");
+      toast.error(
+        `Message not sent. Check your connection and try again, or email ${EMAIL}.`
+      );
     } finally {
       setLoading(false);
-      setForm({ name: "", email: "", message: "" });
     }
   };
 
   return (
-    <section id="contact-us" className="container mx-auto">
-      <motion.div
-        variants={staggerContainer()}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.25 }}
-        className={
-          "sm:px-16 px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0"
-        }
-      >
-        <span className="hash-span" id="contact">
-          &nbsp;
-        </span>
-        <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
-          <motion.div
-            variants={slideIn("left", "tween", 0.2, 1)}
-            className="flex-[0.75] bg-[#100d25] p-8 rounded-2xl"
-          >
-            {/* Title */}
-            <p className="sm:text-[18px] text-[14px] text-[#aaa6c3] uppercase tracking-wider">
-              Get in touch
-            </p>
-            <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
-              Contact.
-            </h2>
+    <section
+      id="contact-us"
+      className="mx-auto max-w-6xl scroll-mt-20 px-6 py-28 md:px-10"
+    >
+      <SectionHeading title="Contact" />
 
-            {/* Form */}
-            <form
-              ref={formRef}
-              onSubmit={handleSubmit}
-              className="mt-12 flex flex-col gap-8"
+      <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_1.4fr]">
+        <div>
+          <p className="max-w-sm text-lg leading-relaxed text-form/80">
+            Have a process that needs untangling? Send a message here, or email{" "}
+            <a
+              href={`mailto:${EMAIL}`}
+              className="text-form underline decoration-copy underline-offset-4"
             >
-              {/* Name */}
-              <label htmlFor="name" className="flex flex-col">
-                <span className="text-white font-medium mb-4">Your Name*</span>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="ex. Fuad Hasan"
-                  title="What's your name?"
-                  disabled={loading}
-                  aria-disabled={loading}
-                  className="bg-[#151030] py-4 px-6 placeholder:text-[#aaa6c3] text-white rounded-lg outline-hidden border-none font-medium disabled:bg-[#151030]/20 disabled:text-white/60"
-                />
+              {EMAIL}
+            </a>
+            .
+          </p>
+        </div>
 
-                {/* Invalid Name */}
-                <span className="text-red-400 mt-2 hidden" id="name-error">
-                  Invalid Name!
-                </span>
-              </label>
+        {/* Intake form, printed on paper. */}
+        <div className="relative bg-form p-6 text-carbon md:p-10">
+          <p className="mono-label flex justify-between border-b-2 border-carbon pb-3 text-carbon/70">
+            <span>Intake form</span>
+            <span>All fields required</span>
+          </p>
 
-              {/* Email */}
-              <label htmlFor="email" className="flex flex-col">
-                <span className="text-white font-medium mb-4">Your Email*</span>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="ex. fuad.antor@gmail.com"
-                  title="What's your email?"
-                  disabled={loading}
-                  aria-disabled={loading}
-                  className="bg-[#151030] py-4 px-6 placeholder:text-[#aaa6c3] text-white rounded-lg outline-hidden border-none font-medium disabled:bg-[#151030]/20 disabled:text-white/60"
-                />
-
-                {/* Invalid Email */}
-                <span className="text-red-400 mt-2 hidden" id="email-error">
-                  Invalid E-mail!
-                </span>
-              </label>
-
-              {/* Message */}
-              <label htmlFor="message" className="flex flex-col">
-                <span className="text-white font-medium mb-4">
-                  Your Message*
-                </span>
-                <textarea
-                  rows={7}
-                  name="message"
-                  id="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="Hello there!"
-                  title="What do you want to say?"
-                  disabled={loading}
-                  aria-disabled={loading}
-                  className="bg-[#151030] py-4 px-6 placeholder:text-[#aaa6c3] text-white rounded-lg outline-hidden border-none font-medium disabled:bg-[#151030]/20 disabled:text-white/60 disabled:resize-none"
-                />
-
-                {/* Invalid Message */}
-                <span className="text-red-400 mt-2 hidden" id="message-error">
-                  Invalid Message!
-                </span>
-              </label>
-
-              {/* Submit */}
-              <button
-                type="submit"
-                title={loading ? "Sending..." : "Send"}
-                className="bg-[#151030] py-3 px-8 outline-hidden w-fit text-white font-bold shadow-md shadow-primary rounded-xl disabled:bg-[#151030]/20 disabled:text-white/60"
+          <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-8">
+            {/* Name */}
+            <label htmlFor="name" className="flex flex-col">
+              <span className="mono-label text-carbon/70">Name</span>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                value={form.name}
+                onChange={handleChange}
+                placeholder="Your name"
+                autoComplete="name"
                 disabled={loading}
                 aria-disabled={loading}
-              >
-                {/* check loader state */}
-                {loading ? "Sending..." : "Send"}
-              </button>
-            </form>
-          </motion.div>
+                className={inputClass}
+              />
 
-          {/* Earth Model */}
-          <motion.div
-            variants={slideIn("right", "tween", 0.2, 1)}
-            className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
-          >
-            <EarthCanvas />
-          </motion.div>
+              {/* Invalid Name */}
+              <span
+                className="mt-2 hidden text-sm text-[#A3271C]"
+                id="name-error"
+              >
+                Enter at least 3 characters.
+              </span>
+            </label>
+
+            {/* Email */}
+            <label htmlFor="email" className="flex flex-col">
+              <span className="mono-label text-carbon/70">Email</span>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="you@example.com"
+                autoComplete="email"
+                disabled={loading}
+                aria-disabled={loading}
+                className={inputClass}
+              />
+
+              {/* Invalid Email */}
+              <span
+                className="mt-2 hidden text-sm text-[#A3271C]"
+                id="email-error"
+              >
+                Enter an email address so I can reply.
+              </span>
+            </label>
+
+            {/* Message */}
+            <label htmlFor="message" className="flex flex-col">
+              <span className="mono-label text-carbon/70">Message</span>
+              <textarea
+                rows={6}
+                name="message"
+                id="message"
+                value={form.message}
+                onChange={handleChange}
+                placeholder="What are you working on?"
+                disabled={loading}
+                aria-disabled={loading}
+                className={`${inputClass} resize-y disabled:resize-none`}
+              />
+
+              {/* Invalid Message */}
+              <span
+                className="mt-2 hidden text-sm text-[#A3271C]"
+                id="message-error"
+              >
+                Write at least 5 characters.
+              </span>
+            </label>
+
+            {/* Submit */}
+            <button
+              type="submit"
+              className="mono-label w-fit bg-stamp px-6 py-3 text-sm font-bold text-carbon transition-colors hover:bg-[#EA6457] disabled:opacity-60"
+              disabled={loading}
+              aria-disabled={loading}
+            >
+              {loading ? "Sending…" : "Send message"}
+            </button>
+          </form>
+
+          <p role="status" className="sr-only">
+            {sent ? "Message sent." : ""}
+          </p>
+          <AnimatePresence>
+            {sent && (
+              <motion.p
+                aria-hidden
+                initial={{ opacity: 0, scale: 1.8, rotate: -8 }}
+                animate={{ opacity: 1, scale: 1, rotate: -8 }}
+                exit={{ opacity: 0 }}
+                transition={{ type: "spring", stiffness: 400, damping: 22 }}
+                className="mono-label pointer-events-none absolute bottom-10 right-8 border-[3px] border-stamp px-4 py-2 text-lg font-bold text-stamp"
+              >
+                Received
+              </motion.p>
+            )}
+          </AnimatePresence>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

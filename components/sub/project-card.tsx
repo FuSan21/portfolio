@@ -1,10 +1,9 @@
 "use client";
 
-import { memo, useRef } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
-import { fadeIn } from "@/lib/motion";
-import { useMediaQuery } from "@/lib/use-media-query";
+
+import { rise } from "@/lib/motion";
 
 type ProjectCardProps = {
   columnIndex: number;
@@ -16,87 +15,93 @@ type ProjectCardProps = {
   tech: ReadonlyArray<{ readonly name: string; readonly icon: string }>;
 };
 
-export const ProjectCard = memo(
-  ({
-    columnIndex,
-    src,
-    title,
-    description,
-    demo,
-    source,
-    tech,
-  }: ProjectCardProps) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.5 });
-    const isTouchDevice = useMediaQuery("(hover: none)", false);
+// Each card is a "normalized" record: a schema strip across the top, then the
+// screenshot and the description.
+export const ProjectCard = ({
+  columnIndex,
+  src,
+  title,
+  description,
+  demo,
+  source,
+  tech,
+}: ProjectCardProps) => {
+  const availability = [demo && "Live", source && "Source"]
+    .filter(Boolean)
+    .join(" · ");
 
-    return (
-      <motion.div
-        ref={ref}
-        variants={fadeIn("right", "spring", 0.5 * columnIndex, 0.75)}
-        initial="hidden"
-        animate={isInView ? "show" : "hidden"}
-        {...(!isTouchDevice && { whileHover: { scale: [null, 1.1, 1.05] } })}
-        {...(isTouchDevice && { whileTap: { scale: 0.95 } })}
-        className="relative overflow-hidden rounded-lg shadow-lg border border-[#2A0E61] flex flex-col h-full"
-      >
-        <Image
-          src={src}
-          alt={title}
-          width={1498}
-          height={842}
-          className="w-full object-contain"
-          draggable={false}
-        />
+  return (
+    <motion.article
+      variants={rise(0.08 * columnIndex)}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.25 }}
+      className="flex h-full flex-col border bg-ledger transition-colors hover:border-copy/60"
+    >
+      <div className="mono-label flex justify-between gap-4 border-b px-4 py-2 text-form/55">
+        <span className="truncate">
+          {tech
+            .slice(0, 3)
+            .map((item) => item.name)
+            .join(" · ")}
+          {tech.length > 3 && ` +${tech.length - 3}`}
+        </span>
+        <span className="shrink-0">{availability || "Private"}</span>
+      </div>
 
-        <div className="relative p-4 flex flex-col grow">
-          <h1 className="text-2xl font-semibold text-white">{title}</h1>
-          <p className="mt-2 text-gray-300 grow">{description}</p>
-          <div className="flex justify-between items-center mt-4">
-            <div className="flex flex-col space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0">
-              {demo && (
-                <a
-                  href={demo}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="flex items-center justify-center p-2.5 button-primary text-center text-white cursor-pointer rounded-lg"
-                >
-                  <span>Demo</span>
-                </a>
-              )}
-              {source && (
-                <a
-                  href={source}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="flex items-center justify-center p-2.5 button-primary text-center text-white cursor-pointer rounded-lg"
-                >
-                  <span>Source</span>
-                </a>
-              )}
-            </div>
-            <div className="flex flex-wrap gap-2 justify-end">
-              {tech.map((item, i) => (
-                <div key={i} className="px-2 py-1 rounded-md relative group">
-                  <Image
-                    src={`/skills/${item.icon}`}
-                    alt={item.name}
-                    width={20}
-                    height={20}
-                    className="cursor-pointer select-none h-5 w-5"
-                    draggable={false}
-                  />
-                  <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded-sm py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                    {item.name}
-                  </span>
-                </div>
-              ))}
-            </div>
+      <Image
+        src={src}
+        alt={`Screenshot of ${title}`}
+        width={1498}
+        height={842}
+        className="w-full border-b object-contain"
+        draggable={false}
+      />
+
+      <div className="flex grow flex-col p-6">
+        <h3 className="font-display text-3xl text-form">{title}</h3>
+        <p className="mt-3 grow leading-relaxed text-form/75">{description}</p>
+
+        <ul className="mt-6 flex flex-wrap gap-3" aria-label="Technologies">
+          {tech.map((item) => (
+            <li key={item.name} title={item.name}>
+              <Image
+                src={`/skills/${item.icon}`}
+                alt={item.name}
+                width={20}
+                height={20}
+                className="h-5 w-5 object-contain"
+                draggable={false}
+              />
+            </li>
+          ))}
+        </ul>
+
+        {(demo || source) && (
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 border-t pt-4">
+            {demo && (
+              <a
+                href={demo}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="mono-label text-copy underline-offset-4 hover:underline"
+              >
+                Open live site ↗
+              </a>
+            )}
+            {source && (
+              <a
+                href={source}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="mono-label text-copy underline-offset-4 hover:underline"
+              >
+                View source ↗
+              </a>
+            )}
           </div>
-        </div>
-      </motion.div>
-    );
-  }
-);
-
-ProjectCard.displayName = "ProjectCard";
+        )}
+      </div>
+    </motion.article>
+  );
+};
