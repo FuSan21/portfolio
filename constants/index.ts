@@ -537,7 +537,7 @@ export const PROJECTS = [
   {
     title: "Vehicle Accessories Inventory Shop",
     description:
-      "A complete Store Website where admin can manage products, orders, and users. Users can buy products and track their orders. Has filtering, searching, and sorting.",
+      "An online shop and store-management dashboard for car filters in Bangladesh. Customers find parts by make, model and engine, pay by bKash, Nagad, card or cash on delivery, and follow each order on a timeline with email updates. Admins get a revenue dashboard, a stock ledger with reorder alerts, coupon management and CSV exports.",
     image: "/projects/vehicleparts.webp",
     demo: "https://demo1.fusan.me",
     source: "https://github.com/FuSan21/store-Management-Website",
@@ -547,24 +547,16 @@ export const PROJECTS = [
         icon: "laravel.svg",
       },
       {
+        name: "PHP",
+        icon: "php.png",
+      },
+      {
         name: "Tailwind CSS",
         icon: "tailwind.png",
       },
       {
         name: "PostgreSQL",
         icon: "postgresql.png",
-      },
-      {
-        name: "JavaScript",
-        icon: "js.png",
-      },
-      {
-        name: "HTML",
-        icon: "html.png",
-      },
-      {
-        name: "CSS",
-        icon: "css.png",
       },
       {
         name: "Vercel",
