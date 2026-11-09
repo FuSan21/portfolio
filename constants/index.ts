@@ -427,62 +427,6 @@ export const PROJECTS = [
     ],
   },
   {
-    title: "Headless Block Styles",
-    description:
-      "A WordPress plugin, published in the official WordPress.org plugin directory, that brings full Gutenberg block styling to headless frontends like Next.js over the REST API, with no WPGraphQL required. It serves the global stylesheet with all preset variables and classes, and computes per-block inline styles on the server with the WordPress Style Engine so the frontend receives ready-to-spread React style objects.",
-    image: "/projects/headless-block-styles.webp",
-    demo: "https://wordpress.org/plugins/headless-block-styles/",
-    source: "https://github.com/FuSan21/headless-block-styles",
-    tech: [
-      {
-        name: "PHP",
-        icon: "php.png",
-      },
-      {
-        name: "WordPress",
-        icon: "wordpress.png",
-      },
-      {
-        name: "Next.js",
-        icon: "next.png",
-      },
-    ],
-  },
-  {
-    title: "Clinique Accounts Management Web App",
-    description:
-      "A comprehensive web application designed to streamline and automate the financial and operational processes of a Nursing Home.",
-    image: "/projects/clinique.webp",
-    demo: "https://github.com/FuSan21/clinique-account-management",
-    source: "",
-    tech: [
-      {
-        name: "Node.js",
-        icon: "node.png",
-      },
-      {
-        name: "Express.js",
-        icon: "express.png",
-      },
-      {
-        name: "MySQL",
-        icon: "mysql.png",
-      },
-      {
-        name: "JavaScript",
-        icon: "js.png",
-      },
-      {
-        name: "HTML",
-        icon: "html.png",
-      },
-      {
-        name: "CSS",
-        icon: "css.png",
-      },
-    ],
-  },
-  {
     title: "Kahoot Portal",
     description:
       "A live multiplayer quiz platform. A host opens a lobby on a big screen and players join from their phones with a six-digit code or QR code. Questions, answer reveals and standings sync in realtime; answers are scored server-side by speed, and the answer key stays hidden in the database until each reveal. Includes a quiz editor, game history and a monthly leaderboard.",
@@ -555,11 +499,67 @@ export const PROJECTS = [
     ],
   },
   {
+    title: "Headless Block Styles",
+    description:
+      "A WordPress plugin, published in the official WordPress.org plugin directory, that brings full Gutenberg block styling to headless frontends like Next.js over the REST API, with no WPGraphQL required. It serves the global stylesheet with all preset variables and classes, and computes per-block inline styles on the server with the WordPress Style Engine so the frontend receives ready-to-spread React style objects.",
+    image: "/projects/headless-block-styles.webp",
+    demo: "https://wordpress.org/plugins/headless-block-styles/",
+    source: "https://github.com/FuSan21/headless-block-styles",
+    tech: [
+      {
+        name: "PHP",
+        icon: "php.png",
+      },
+      {
+        name: "WordPress",
+        icon: "wordpress.png",
+      },
+      {
+        name: "Next.js",
+        icon: "next.png",
+      },
+    ],
+  },
+  {
+    title: "Clinique Accounts Management Web App",
+    description:
+      "A comprehensive web application designed to streamline and automate the financial and operational processes of a Nursing Home.",
+    image: "/projects/clinique.webp",
+    demo: "https://github.com/FuSan21/clinique-account-management",
+    source: "",
+    tech: [
+      {
+        name: "Node.js",
+        icon: "node.png",
+      },
+      {
+        name: "Express.js",
+        icon: "express.png",
+      },
+      {
+        name: "MySQL",
+        icon: "mysql.png",
+      },
+      {
+        name: "JavaScript",
+        icon: "js.png",
+      },
+      {
+        name: "HTML",
+        icon: "html.png",
+      },
+      {
+        name: "CSS",
+        icon: "css.png",
+      },
+    ],
+  },
+  {
     title: "Jira Standup Stats Generator",
     description:
       "Userscript that helps teams conduct more efficient Jira standup meetings by providing an organized view of tickets by assignee. Also include script to communicate with thirdparty website to update the data remotely from jira.",
     image: "/projects/jira-standup-stats-generator.png",
-    demo: "https://github.com/FuSan21/jira-standup-stats-generator",
+    demo: "",
     source: "https://github.com/FuSan21/jira-standup-stats-generator",
     tech: [
       {
