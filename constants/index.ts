@@ -99,6 +99,15 @@ export const EXPERIENCES = {
   ],
 } as const;
 
+export const CERTIFICATIONS = [
+  {
+    title: "Claude Certified Architect – Professional",
+    issuer: "Anthropic",
+    date: "Sep 2026",
+    link: "https://www.credly.com/badges/a9a4330b-77ba-432c-95e1-4283679baa3a/public_url",
+  },
+] as const;
+
 export const BASE_LANGUAGE = [
   {
     skill_name: "Python",

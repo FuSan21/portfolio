@@ -1,4 +1,4 @@
-import { EXPERIENCES } from "@/constants";
+import { CERTIFICATIONS, EXPERIENCES } from "@/constants";
 import { parseStringWithBold } from "@/lib/utils";
 import { SectionHeading } from "@/components/sub/section-heading";
 
@@ -14,7 +14,7 @@ const LedgerRow = ({
   open?: boolean;
 }) => (
   <details open={open} className="group border-t last:border-b">
-    <summary className="grid cursor-pointer grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 px-2 py-5 transition-colors hover:bg-ledger md:grid-cols-[11rem_1fr_minmax(0,18rem)_auto]">
+    <summary className="grid cursor-pointer grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 px-2 py-5 transition-colors hover:bg-ledger md:grid-cols-[11rem_1fr_minmax(0,18rem)_5rem]">
       <span className="mono-label text-form/55 md:col-start-1 md:row-start-1">
         {record.date}
       </span>
@@ -26,7 +26,7 @@ const LedgerRow = ({
       </span>
       <span
         aria-hidden
-        className="mono-label col-start-2 row-start-1 text-copy md:col-start-4"
+        className="mono-label col-start-2 row-start-1 text-copy md:col-start-4 md:text-right"
       >
         <span className="group-open:hidden">[+]</span>
         <span className="hidden group-open:inline">[−]</span>
@@ -49,7 +49,7 @@ export const Experience = () => (
   >
     <SectionHeading
       title="Experience"
-      detail={`${EXPERIENCES.job.length} roles · ${EXPERIENCES.education.length} degree`}
+      detail={`${EXPERIENCES.job.length} roles · ${EXPERIENCES.education.length} degree · ${CERTIFICATIONS.length} certification`}
     />
     <div className="mt-12">
       {EXPERIENCES.job.map((record, i) => (
@@ -67,5 +67,31 @@ export const Experience = () => (
         <LedgerRow key={record.title} record={record} />
       ))}
     </div>
+
+    <h3 className="mono-label mt-16 text-form/60">Certifications</h3>
+    <ul className="mt-4">
+      {CERTIFICATIONS.map((cert) => (
+        <li
+          key={cert.title}
+          className="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 border-t px-2 py-5 last:border-b md:grid-cols-[11rem_1fr_minmax(0,18rem)_5rem]"
+        >
+          <span className="mono-label text-form/55">{cert.date}</span>
+          <span className="col-start-1 font-display text-2xl text-form md:col-start-2 md:row-start-1 md:text-3xl">
+            {cert.title}
+          </span>
+          <span className="mono-label col-start-1 text-form/70 md:col-start-3 md:row-start-1">
+            {cert.issuer}
+          </span>
+          <a
+            href={cert.link}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="mono-label col-start-2 row-start-1 text-copy underline-offset-4 hover:underline md:col-start-4 md:text-right"
+          >
+            Verify ↗
+          </a>
+        </li>
+      ))}
+    </ul>
   </section>
 );
