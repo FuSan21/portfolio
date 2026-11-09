@@ -495,7 +495,7 @@ export const PROJECTS = [
   {
     title: "Kahoot Portal",
     description:
-      "This project is a multiplayer quiz app. Quiz host can create quizzes and players can join the quiz using a link. It handles players in realtime and show answer accuracy and final score after question timer and quiz completion respectively.",
+      "A live multiplayer quiz platform. A host opens a lobby on a big screen and players join from their phones with a six-digit code or QR code. Questions, answer reveals and standings sync in realtime; answers are scored server-side by speed, and the answer key stays hidden in the database until each reveal. Includes a quiz editor, game history and a monthly leaderboard.",
     image: "/projects/kahoot-portal.webp",
     demo: "https://demo2.fusan.me",
     source: "https://github.com/FuSan21/kahoot-portal",
@@ -503,10 +503,6 @@ export const PROJECTS = [
       {
         name: "Next.js",
         icon: "next.png",
-      },
-      {
-        name: "Node.js",
-        icon: "node.png",
       },
       {
         name: "React",
@@ -521,20 +517,16 @@ export const PROJECTS = [
         icon: "tailwind.png",
       },
       {
-        name: "PostgreSQL",
-        icon: "postgresql.png",
+        name: "Framer Motion",
+        icon: "framer.png",
       },
       {
         name: "Supabase",
         icon: "supabase.png",
       },
       {
-        name: "HTML",
-        icon: "html.png",
-      },
-      {
-        name: "CSS",
-        icon: "css.png",
+        name: "PostgreSQL",
+        icon: "postgresql.png",
       },
       {
         name: "Vercel",
