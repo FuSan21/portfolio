@@ -576,9 +576,9 @@ export const PROJECTS = [
     ],
   },
   {
-    title: "3d Space Portfolio",
+    title: "The Normalizer Portfolio",
     description:
-      "This project is an enhanced version of the sanidhyy/space-portfolio, incorporating advanced features and improved responsiveness for smaller screens. It utilizes Three.js for sophisticated 3D rendering and Framer Motion for dynamic animations.",
+      "This site. A scroll-driven Three.js scene feeds messy paper through a pair of rollers and prints clean project records, while the headline steps through the degraded grades of the Redaction typeface. Built on Next.js 16 with Cache Components and the React Compiler.",
     image: "/projects/portfolio.webp",
     demo: "https://www.fusan.me",
     source: "https://github.com/FuSan21/portfolio",
@@ -600,8 +600,8 @@ export const PROJECTS = [
         icon: "framer.png",
       },
       {
-        name: "JavaScript",
-        icon: "js.png",
+        name: "TypeScript",
+        icon: "ts.png",
       },
       {
         name: "HTML",
