@@ -355,15 +355,20 @@ const useSceneTextures = (
   useEffect(() => {
     let cancelled = false;
     let built: SceneTextures | null = null;
-    buildSceneTextures(sheets, projectTotal, fonts).then((result) => {
-      if (cancelled) {
-        disposeSceneTextures(result);
-        return;
-      }
-      built = result;
-      setTextures(result);
-      invalidate();
-    });
+    buildSceneTextures(sheets, projectTotal, fonts)
+      .then((result) => {
+        if (cancelled) {
+          disposeSceneTextures(result);
+          return;
+        }
+        built = result;
+        setTextures(result);
+        invalidate();
+      })
+      // Without textures the rollers spin with no paper; at least say why.
+      .catch((error) =>
+        console.error("Normalizer: couldn't build the paper textures", error)
+      );
     return () => {
       cancelled = true;
       if (built) disposeSceneTextures(built);

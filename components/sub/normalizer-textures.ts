@@ -340,9 +340,17 @@ export const buildSceneTextures = async (
   fonts: SceneFonts
 ): Promise<SceneTextures> => {
   // Canvas text silently falls back to a system font if the face isn't
-  // loaded yet, so wait for every family the textures use.
+  // loaded yet, so wait for every family the textures use. Load only the
+  // first family of each stack: next/font adds a "<name> Fallback" face
+  // built from local() system fonts (Arial, Times New Roman) that Android
+  // doesn't ship, and loading the whole stack rejects with NetworkError when
+  // that face fails. A failed load still draws, just in a system font.
   await Promise.all(
-    Object.values(fonts).map((family) => document.fonts.load(`40px ${family}`))
+    Object.values(fonts).map((stack) =>
+      document.fonts
+        .load(`40px ${stack.split(",")[0].trim()}`)
+        .catch(() => [])
+    )
   );
   return {
     atlas: buildAtlas(fonts),
