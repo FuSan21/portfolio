@@ -42,10 +42,14 @@ export const redaction100 = localFont({
   display: "swap",
 });
 
+// next/font has no metrics for this family, so it can't size-adjust a
+// fallback; say so explicitly instead of warning on every build.
 export const atkinson = Atkinson_Hyperlegible_Next({
   subsets: ["latin"],
   variable: "--font-atkinson",
   display: "swap",
+  adjustFontFallback: false,
+  fallback: ["system-ui", "sans-serif"],
 });
 
 export const martian = Martian_Mono({
