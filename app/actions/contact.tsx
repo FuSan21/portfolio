@@ -47,8 +47,13 @@ export async function sendContact(input: ContactInput): Promise<ContactResult> {
   }
 
   const receivedAt = new Intl.DateTimeFormat("en-GB", {
-    dateStyle: "medium",
-    timeStyle: "short",
+    // dateStyle/timeStyle can't be combined with timeZoneName; it throws.
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
     timeZone: "Asia/Dhaka",
     timeZoneName: "short",
   }).format(new Date());
