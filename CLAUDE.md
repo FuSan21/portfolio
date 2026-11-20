@@ -65,7 +65,9 @@ The footer sits in the layout, so its `days` lifetime caps the whole route — `
 
 ## Contact form
 
-`components/main/contact-us.tsx` sends via EmailJS entirely client-side (no API route). It reads four `NEXT_PUBLIC_` vars from `.env.local`: `NEXT_PUBLIC_SERVICE_ID`, `NEXT_PUBLIC_TEMPLATE_ID`, `NEXT_PUBLIC_EMAILJS_KEY`, `NEXT_PUBLIC_EMAILJS_RECIEVER` (the misspelling is the real name). Validation is DOM-based: it toggles `.hidden` on `#name-error` / `#email-error` / `#message-error`, so those IDs must match the field names.
+`components/main/contact-us.tsx` calls the `sendContact` Server Action in `app/actions/contact.tsx`, which sends through Resend from `contact@mail.fusan.me` to `fuad.antor@gmail.com` with the visitor as `replyTo`. Resend is a direct resend.com account on the free tier, not the Vercel Marketplace integration (the Marketplace free plan is disabled for the `fuad-general` team; Pro is $20/mo). `RESEND_API_KEY` is set by hand on the Vercel project and in `.env.local`. `fusan.me` DNS is on Cloudflare. `mail.fusan.me` must stay verified in Resend or every send fails. The action is reachable by direct POST, so it re-validates input, caps lengths, renders the HTML from `emails/contact-notification.tsx` (React Email, styled as the site's paper intake form with a Received stamp; React Email escapes visitor input) plus a plain-text part, and silently drops submissions that fill the hidden `company` honeypot. It replaced EmailJS, whose `NEXT_PUBLIC_` vars are no longer read.
+
+Client-side validation is DOM-based: it toggles `.hidden` on `#name-error` / `#email-error` / `#message-error`, so those IDs must match the field names.
 
 The form has no `noValidate` and the email field is `type="email"`, so a malformed email is caught by native browser validation before React's handler runs — the custom email error span only appears when the field is empty. Long-standing behavior, not a bug. On success the form clears and shows a "Received" stamp; on failure it keeps the visitor's text and shows an error toast.
 

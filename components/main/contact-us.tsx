@@ -1,10 +1,10 @@
 "use client";
 
-import emailjs from "@emailjs/browser";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { toast } from "sonner";
 
+import { sendContact } from "@/app/actions/contact";
 import { SectionHeading } from "@/components/sub/section-heading";
 
 const EMAIL = "fuad.antor@gmail.com";
@@ -18,6 +18,7 @@ export const Contact = () => {
     name: "",
     email: "",
     message: "",
+    company: "",
   });
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
@@ -60,22 +61,11 @@ export const Contact = () => {
     setLoading(true);
 
     try {
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_SERVICE_ID || "",
-        process.env.NEXT_PUBLIC_TEMPLATE_ID || "",
-        {
-          from_name: form.name,
-          to_name: "Fuad Hasan",
-          from_email: form.email.trim().toLowerCase(),
-          to_email: process.env.NEXT_PUBLIC_EMAILJS_RECIEVER,
-          reply_to: form.email.trim().toLowerCase(),
-          message: form.message,
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_KEY
-      );
+      const result = await sendContact(form);
+      if (!result.ok) throw new Error("Contact form send failed");
       // Only clear the form once it has actually been sent, so a failed
       // send doesn't throw away what the visitor wrote.
-      setForm({ name: "", email: "", message: "" });
+      setForm({ name: "", email: "", message: "", company: "" });
       setSent(true);
     } catch (error) {
       console.error("[CONTACT_ERROR]: ", error);
@@ -189,6 +179,19 @@ export const Contact = () => {
                 Write at least 5 characters.
               </span>
             </label>
+
+            {/* Honeypot: off-screen and skipped by keyboard and screen
+                readers, so only bots fill it in. */}
+            <input
+              type="text"
+              name="company"
+              value={form.company}
+              onChange={handleChange}
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden
+              className="absolute -left-[9999px] h-px w-px opacity-0"
+            />
 
             {/* Submit */}
             <button
